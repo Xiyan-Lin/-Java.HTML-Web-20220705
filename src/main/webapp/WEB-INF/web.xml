@@ -29,5 +29,9 @@
   	<servlet-name>lotto</servlet-name>
   	<url-pattern>/servlet/lotto</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>lotto</servlet-name>
+  	<url-pattern>/servlet/lotto/*</url-pattern>
+  </servlet-mapping>
   
 </web-app>

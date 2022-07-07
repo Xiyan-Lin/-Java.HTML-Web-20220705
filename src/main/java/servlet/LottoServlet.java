@@ -14,6 +14,8 @@ import javax.servlet.ServletResponse;
 // 當 LottoServlet 繼承了 GenericServlet(通用型 Web 服務) 代表 LottoServlet 是一個 Web 服務
 public class LottoServlet extends GenericServlet {
 
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
 		// 1. 撰寫服務商業邏輯: 自動產生四星彩電腦選號

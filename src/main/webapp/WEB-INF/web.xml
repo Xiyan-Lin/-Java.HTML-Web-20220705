@@ -10,14 +10,24 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
+  <!-- Web 服務 -->
   <servlet>
   	<servlet-name>hello</servlet-name>
   	<servlet-class>servlet.HelloServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>lotto</servlet-name>
+  	<servlet-class>servlet.LottoServlet</servlet-class>
+  </servlet>
   
+  <!-- 設定 Web 服務 URL -->
   <servlet-mapping>
   	<servlet-name>hello</servlet-name>
   	<url-pattern>/servlet/hello</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>lotto</servlet-name>
+  	<url-pattern>/servlet/lotto</url-pattern>
   </servlet-mapping>
   
 </web-app>

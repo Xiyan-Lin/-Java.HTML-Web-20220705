@@ -21,6 +21,11 @@
   	<servlet-class>servlet.LottoServlet</servlet-class>
   </servlet>
   
+  <servlet>
+  	<servlet-name>today</servlet-name>
+  	<servlet-class>servlet.TodayServlet</servlet-class>
+  </servlet>
+  
   <!-- 設定 Web 服務 URL -->
   <servlet-mapping>
   	<servlet-name>hello</servlet-name>
@@ -33,8 +38,8 @@
   </servlet-mapping>
   
   <servlet-mapping>
-  	<servlet-name>lotto</servlet-name>
-  	<url-pattern>/servlet/lotto/*</url-pattern>
+  	<servlet-name>today</servlet-name>
+  	<url-pattern>/servlet/today</url-pattern>
   </servlet-mapping>
   
 </web-app>

@@ -15,6 +15,7 @@
   	<servlet-name>hello</servlet-name>
   	<servlet-class>servlet.HelloServlet</servlet-class>
   </servlet>
+  
   <servlet>
   	<servlet-name>lotto</servlet-name>
   	<servlet-class>servlet.LottoServlet</servlet-class>
@@ -25,10 +26,12 @@
   	<servlet-name>hello</servlet-name>
   	<url-pattern>/servlet/hello</url-pattern>
   </servlet-mapping>
+  
   <servlet-mapping>
   	<servlet-name>lotto</servlet-name>
   	<url-pattern>/servlet/lotto</url-pattern>
   </servlet-mapping>
+  
   <servlet-mapping>
   	<servlet-name>lotto</servlet-name>
   	<url-pattern>/servlet/lotto/*</url-pattern>

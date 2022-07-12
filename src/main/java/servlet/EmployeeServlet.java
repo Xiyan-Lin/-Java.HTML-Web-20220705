@@ -12,6 +12,17 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/servlet/employee")
 public class EmployeeServlet extends HttpServlet {
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// UTF-8 編碼
+		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");
+		resp.setContentType("text/html;charset=utf-8");
+		
+		PrintWriter out = resp.getWriter();
+		out.print("HTTP 方法使用錯誤! 本網頁不支援 GET 請求請使用 POST");
+	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

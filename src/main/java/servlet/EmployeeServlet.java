@@ -42,7 +42,7 @@ public class EmployeeServlet extends HttpServlet {
 		String empMemo = req.getParameter("empMemo");
 		
 		// 建立分派器
-		RequestDispatcher rd = req.getRequestDispatcher("/form/employee_result.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/employee_result.jsp");
 		// 準備好要傳給 jsp 的資料
 		req.setAttribute("empName", empName);
 		req.setAttribute("empAge", empAge);

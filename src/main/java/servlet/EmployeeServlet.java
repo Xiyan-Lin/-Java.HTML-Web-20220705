@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,7 +41,21 @@ public class EmployeeServlet extends HttpServlet {
 		String[] empLang = req.getParameterValues("empLang");
 		String empMemo = req.getParameter("empMemo");
 		
-		// 回傳 response 給前端
+		// 建立分派器
+		RequestDispatcher rd = req.getRequestDispatcher("/form/employee_result.jsp");
+		// 準備好要傳給 jsp 的資料
+		req.setAttribute("empName", empName);
+		req.setAttribute("empAge", empAge);
+		req.setAttribute("empSex", empSex);
+		req.setAttribute("empPos", empPos);
+		req.setAttribute("empBirth", empBirth);
+		req.setAttribute("empLang", Arrays.toString(empLang));
+		req.setAttribute("empMemo", empMemo);
+		// 轉發到目的地 /form/employee_result.jsp
+		rd.forward(req, resp);
+		
+		// 直接回傳 response 給前端
+		/*
 		PrintWriter out = resp.getWriter();
 		out.println("<html>");
 		out.println("<head><title>員工資料表單回應</title><link rel=\"stylesheet\" href=\"https://unpkg.com/purecss@2.1.0/build/pure-min.css\"></head>");
@@ -60,7 +75,7 @@ public class EmployeeServlet extends HttpServlet {
 		out.println("</form>");
 		out.println("</body>");
 		out.println("</html>");
-		
+		*/
 		
 	}
 	

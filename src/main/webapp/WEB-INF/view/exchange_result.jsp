@@ -19,5 +19,11 @@
 				<button type="button" class="pure-button pure-button-primary" onclick="history.back()">返回</button>
 			</fieldset>
 		</form>
+		<form class="pure-form">
+			<fieldset>
+				<legend>歷史紀錄</legend>
+				${ exchanges }
+			</fieldset>
+		</form>	
 	</body>
 </html>

@@ -11,7 +11,7 @@
 		<form class="pure-form">
 			<fieldset>
 				<legend>匯率換算結果</legend>
-				金額: ${ exchange.amount }<p />
+				金額: ${ exchange.from } ${ exchange.amount }<p />
 				換匯: ${ exchange.from } 轉 ${ exchange.to }<p />
 				匯率: ${ exchange.exchange }<p />
 				日期: ${ exchange.datetime }<p />

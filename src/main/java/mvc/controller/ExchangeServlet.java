@@ -37,6 +37,7 @@ public class ExchangeServlet extends HttpServlet {
 		// 建立分派器
 		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/view/exchange_result.jsp");
 		req.setAttribute("exchange", exchange);
+		req.setAttribute("exchanges", service.queryAllExchanges());
 		rd.forward(req, resp);
 		
 	}

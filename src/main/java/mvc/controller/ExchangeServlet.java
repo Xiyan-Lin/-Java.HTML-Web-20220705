@@ -15,6 +15,13 @@ import mvc.service.ExchangeService;
 @WebServlet("/mvc/controller/exchange")
 public class ExchangeServlet extends HttpServlet {
 	private ExchangeService service = new ExchangeService();
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/view/exchange_form.html");
+		rd.forward(req, resp);
+	}
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// 抓取網頁表單內容

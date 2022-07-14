@@ -1,10 +1,34 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
+	<head>
+		<link rel="stylesheet" href="https://unpkg.com/purecss@2.1.0/build/pure-min.css">
+		<meta charset="UTF-8">
+		<title>匯率換算</title>
+	</head>
+	<body style="padding: 15px">
+		<form class="pure-form" method="post" action="/JavaWeb_20220705/mvc/controller/exchange">
+			<fieldset>
+				<legend>匯率換算</legend>
+				金額: <input type="number" placeholder="請輸入年齡" name="empAge" /><p />
+				<select name="from">
+						<option value="TWD" selected>台幣</option>
+						<option value="USD">美金</option>
+						<option value="JPY">日幣</option>
+						<option value="CNY">人民幣</option>
+						<option value="EUR">歐元</option>
+				</select>
+				轉
+				<select name="to">
+						<option value="TWD">台幣</option>
+						<option value="USD" selected>美金</option>
+						<option value="JPY">日幣</option>
+						<option value="CNY">人民幣</option>
+						<option value="EUR">歐元</option>
+				</select>
+				<button type="reset" class="pure-button pure-button-primary">重置</button>
+				<button type="submit" class="pure-button pure-button-primary">傳送</button>
+			</fieldset>
+		</form>
+		
+	</body>
 </html>

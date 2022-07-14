@@ -10,10 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import mvc.entity.Exchange;
+import mvc.service.ExchangeService;
 
 @WebServlet("/mvc/controller/exchange")
 public class ExchangeServlet extends HttpServlet {
-
+	private ExchangeService service = new ExchangeService();
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// 抓取網頁表單內容
@@ -24,11 +25,8 @@ public class ExchangeServlet extends HttpServlet {
 		Double amount = Double.parseDouble(form_amount);
 		String from = form_from;
 		String to = form_to;
-		// 建立 Exchange 物件
-		Exchange exchange = new Exchange();
-		exchange.setAmount(amount);
-		exchange.setFrom(from);
-		exchange.setTo(to);
+		// 呼叫 ExchangeService 取得 Exchange 物件
+		Exchange exchange = service.getExchange(amount, from, to);
 		// 建立分派器
 		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/view/exchange_result.jsp");
 		req.setAttribute("exchange", exchange);

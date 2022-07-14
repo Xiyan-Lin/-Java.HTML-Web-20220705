@@ -1,3 +1,5 @@
+<%@ page import="java.util.List"%>
+<%@ page import="mvc.entity.Exchange"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -22,7 +24,33 @@
 		<form class="pure-form">
 			<fieldset>
 				<legend>歷史紀錄</legend>
-				${ exchanges }
+				<table class="pure-table pure-table-bordered">
+					<thead>
+				        <tr>
+				            <th>id</th>
+				            <th>amount</th>
+				            <th>from</th>
+				            <th>to</th>
+				            <th>exchange</th>
+				            <th>result</th>
+				            <th>datetime</th>
+				        </tr>
+				    </thead>
+				    <tbody>
+				    	<% List<Exchange> exchanges = (List<Exchange>)request.getAttribute("exchanges"); %>
+				    	<% for(int i=0;i<exchanges.size();i++) {%>
+				    		<tr>
+				    			<td><%=i+1 %></td>
+				    			<td><%=exchanges.get(i).getAmount() %></td>
+				    			<td><%=exchanges.get(i).getFrom() %></td>
+				    			<td><%=exchanges.get(i).getTo() %></td>
+				    			<td><%=exchanges.get(i).getExchange() %></td>
+				    			<td><%=exchanges.get(i).getResult() %></td>
+				    			<td><%=exchanges.get(i).getDatetime() %></td>
+				    		</tr>
+				    	<% } %>
+				    </tbody>
+				</table>
 			</fieldset>
 		</form>	
 	</body>

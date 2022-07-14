@@ -15,7 +15,7 @@
 				換匯: ${ exchange.from } 轉 ${ exchange.to }<p />
 				匯率: ${ exchange.exchange }<p />
 				日期: ${ exchange.datetime }<p />
-				結果: ${ exchange.result }<p />
+				結果: ${ exchange.to } ${ exchange.result }<p />
 				<button type="button" class="pure-button pure-button-primary" onclick="history.back()">返回</button>
 			</fieldset>
 		</form>

@@ -64,9 +64,15 @@
 				    			<td>${ exchange.amount }</td>
 				    			<td>${ exchange.from }</td>
 				    			<td>${ exchange.to }</td>
-				    			<td>${ exchange.exchange }</td>
-				    			<td>${ exchange.result }</td>
-				    			<td>${ exchange.datetime }</td>
+				    			<td>
+				    				<fmt:formatNumber value="${ exchange.exchange }" pattern="#.###" />
+				    			</td>
+				    			<td>
+				    				<fmt:formatNumber value="${ exchange.result }" pattern="#.###" />
+				    			</td>
+				    			<td>
+				    				<fmt:formatDate value="${ exchange.datetime }" pattern="yyyy-MM-dd a hh:mm:ss E" />
+				    			</td>
 				    		</tr>
 				    	</c:forEach>
 				    </tbody>

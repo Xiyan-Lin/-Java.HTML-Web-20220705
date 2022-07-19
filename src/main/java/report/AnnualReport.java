@@ -14,7 +14,7 @@ public class AnnualReport extends HttpServlet {
 	
 	private void doHandle(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		PrintWriter out = resp.getWriter();
-		out.print("<h1>年報表</h1>登入成功之後才可以看~");
+		out.print("<h1>年報表</h1>不用登入就可以看~");
 	}
 	
 	@Override

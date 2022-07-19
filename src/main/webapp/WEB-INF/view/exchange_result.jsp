@@ -1,3 +1,6 @@
+<%@page import="com.fasterxml.jackson.databind.ser.std.StdKeySerializers.Default"%>
+<%@ page import="java.text.DecimalFormat"%>
+<%@ page import="java.text.SimpleDateFormat"%>
 <%@ page import="java.util.List"%>
 <%@ page import="mvc.entity.Exchange"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -44,15 +47,17 @@
 				    </thead>
 				    <tbody>
 				    	<% List<Exchange> exchanges = (List<Exchange>)request.getAttribute("exchanges"); %>
+				    	<% DecimalFormat df = new DecimalFormat("#.###"); %>
+				    	<% SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd a hh:mm:ss E"); %>
 				    	<% for(int i=0;i<exchanges.size();i++) {%>
 				    		<tr>
 				    			<td><%=i+1 %></td>
 				    			<td><%=exchanges.get(i).getAmount() %></td>
 				    			<td><%=exchanges.get(i).getFrom() %></td>
 				    			<td><%=exchanges.get(i).getTo() %></td>
-				    			<td><%=exchanges.get(i).getExchange() %></td>
-				    			<td><%=exchanges.get(i).getResult() %></td>
-				    			<td><%=exchanges.get(i).getDatetime() %></td>
+				    			<td><%=df.format(exchanges.get(i).getExchange()) %></td>
+				    			<td><%=df.format(exchanges.get(i).getResult()) %></td>
+				    			<td><%=sdf.format(exchanges.get(i).getDatetime()) %></td>
 				    		</tr>
 				    	<% } %>
 				    </tbody>

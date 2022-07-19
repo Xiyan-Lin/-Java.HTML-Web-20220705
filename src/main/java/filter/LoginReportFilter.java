@@ -18,7 +18,7 @@ public class LoginReportFilter extends HttpFilter {
 			throws IOException, ServletException {
 		String username = req.getParameter("username");
 		// username 是 admin 才可以看報表
-		if(username.equals("admin")) {
+		if(username != null && username.equals("admin")) {
 			chain.doFilter(req, res); // 通過 filter 繼續往下傳遞
 		} else {
 			// 重導到 report_login.jsp 頁面

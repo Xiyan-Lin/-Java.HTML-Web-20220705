@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/report/annul")
+@WebServlet("/report/annual")
 public class AnnualReport extends HttpServlet {
 	
 	private void doHandle(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

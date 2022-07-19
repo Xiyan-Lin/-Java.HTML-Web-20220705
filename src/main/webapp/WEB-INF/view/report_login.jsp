@@ -10,7 +10,7 @@
 	<body style="padding: 15px">
 		<form class="pure-form" method="post" action="">
 			<fieldset>
-				<legend>Report Login</legend>
+				<legend>Report Login 一次性</legend>
 				Username: <input type="text" id="username" name="username" /><p />
 				<button type="reset" class="pure-button pure-button-primary">重置</button>
 				<button type="submit" class="pure-button pure-button-primary">傳送</button>

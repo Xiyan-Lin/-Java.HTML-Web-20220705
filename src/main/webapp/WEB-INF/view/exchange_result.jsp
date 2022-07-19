@@ -2,6 +2,12 @@
 <%@ page import="mvc.entity.Exchange"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/xml" prefix="x" %>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -49,6 +55,20 @@
 				    			<td><%=exchanges.get(i).getDatetime() %></td>
 				    		</tr>
 				    	<% } %>
+				    </tbody>
+				    <tr bgcolor="#ff0000"><td colspan="7"></td></tr>
+				    <tbody>
+				    	<c:forEach var="exchange" varStatus="i" items="${ exchanges }">
+				    		<tr>
+				    			<td>${ i.index+1 }</td>
+				    			<td>${ exchange.amount }</td>
+				    			<td>${ exchange.from }</td>
+				    			<td>${ exchange.to }</td>
+				    			<td>${ exchange.exchange }</td>
+				    			<td>${ exchange.result }</td>
+				    			<td>${ exchange.datetime }</td>
+				    		</tr>
+				    	</c:forEach>
 				    </tbody>
 				</table>
 			</fieldset>

@@ -12,7 +12,7 @@
 		<form class="pure-form" method="post" action="/JavaWeb_20220705/coffee/session">
 			<fieldset>
 				<legend>Coffee Form (目前線上: ${ applicationScope.count }人) </legend>
-				Amount: <input type="number" value="${ sessionScope['amount'] }" placeholder="請輸入數量" name="amount" /><p />
+				Amount: <input type="number" value="${ sessionScope.coffee.amount }" placeholder="請輸入數量" name="amount" /><p />
 				<button type="reset" class="pure-button pure-button-primary">重置</button>
 				<button type="submit" class="pure-button pure-button-primary">買入</button>
 				<button type="button" 

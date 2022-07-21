@@ -18,8 +18,12 @@ public class CoffeeSessionServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession(false);
 		if(session != null) {
-			String amount = session.getAttribute("amount") + "";
-			resp.getWriter().print("Coffee amount: " + amount);
+			if(session.getAttribute("coffee") != null && session.getAttribute("coffee") instanceof Coffee ) {
+				Coffee coffee = (Coffee)session.getAttribute("coffee");
+				resp.getWriter().print("Coffee amount: " + coffee.getAmount());
+			} else {
+				resp.getWriter().print("Coffee amount: None");
+			}
 			resp.getWriter().print(" session id = " + session.getId());
 		} else {
 			resp.getWriter().print("Coffee amount: None");
@@ -31,9 +35,11 @@ public class CoffeeSessionServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String amount = req.getParameter("amount");
 		HttpSession session = req.getSession(true);
+		
 		Coffee coffee = new Coffee();
 		coffee.setAmount(Integer.valueOf(amount));
-		session.setAttribute("amount", coffee);
+		session.setAttribute("coffee", coffee);
+		
 		resp.getWriter().print("Buy Coffee OK!");
 		resp.getWriter().print(" session id = " + session.getId());
 	}

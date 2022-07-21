@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSessionBindingEvent;
 
 @WebListener
 public class MyWebSessionAttributeListener implements HttpSessionAttributeListener {
+	// 印出要監聽的內容
 	private void printInfo(HttpSession session, String message) {
 		System.out.println(message + ": " + session.getAttributeNames());
 		Enumeration<String> names = session.getAttributeNames(); // 透過 session.setAttribute(xxx) 所設定的名字集合

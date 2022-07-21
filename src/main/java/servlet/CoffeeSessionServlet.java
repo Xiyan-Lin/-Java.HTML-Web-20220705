@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import bean.Coffee;
+
 @WebServlet("/coffee/session")
 public class CoffeeSessionServlet extends HttpServlet {
 
@@ -29,7 +31,9 @@ public class CoffeeSessionServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String amount = req.getParameter("amount");
 		HttpSession session = req.getSession(true);
-		session.setAttribute("amount", amount);
+		Coffee coffee = new Coffee();
+		coffee.setAmount(Integer.valueOf(amount));
+		session.setAttribute("amount", coffee);
 		resp.getWriter().print("Buy Coffee OK!");
 		resp.getWriter().print(" session id = " + session.getId());
 	}

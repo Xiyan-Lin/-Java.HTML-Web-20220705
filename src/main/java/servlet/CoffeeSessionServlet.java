@@ -16,7 +16,7 @@ public class CoffeeSessionServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession(false);
 		if(session != null) {
-			String amount = session.getAttribute("amount").toString();
+			String amount = session.getAttribute("amount") + "";
 			resp.getWriter().print("Coffee amount: " + amount);
 			resp.getWriter().print(" session id = " + session.getId());
 		} else {

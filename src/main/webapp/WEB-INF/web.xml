@@ -15,6 +15,10 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
+  <session-config>
+  	<session-timeout>30</session-timeout>
+  </session-config>
+  
   <!-- Web 服務 -->
   <servlet>
   	<servlet-name>hello</servlet-name>

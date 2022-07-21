@@ -18,9 +18,11 @@ public class CoffeeSessionServlet extends HttpServlet {
 		if(session != null) {
 			String amount = session.getAttribute("amount").toString();
 			resp.getWriter().print("Coffee amount: " + amount);
+			resp.getWriter().print(" session id = " + session.getId());
 		} else {
 			resp.getWriter().print("Coffee amount: None");
 		}
+		
 	}
 
 	@Override
@@ -29,6 +31,7 @@ public class CoffeeSessionServlet extends HttpServlet {
 		HttpSession session = req.getSession(true);
 		session.setAttribute("amount", amount);
 		resp.getWriter().print("Buy Coffee OK!");
+		resp.getWriter().print(" session id = " + session.getId());
 	}
 	
 }

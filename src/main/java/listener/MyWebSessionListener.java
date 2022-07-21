@@ -18,11 +18,13 @@ public class MyWebSessionListener implements HttpSessionListener {
 	
 	@Override
 	public void sessionCreated(HttpSessionEvent se) {
+		System.out.println("sessionCreated");
 		updateCount(1, se);
 	}
 
 	@Override
 	public void sessionDestroyed(HttpSessionEvent se) {
+		System.out.println("sessionDestroyed");
 		updateCount(-1, se);
 	}
 	

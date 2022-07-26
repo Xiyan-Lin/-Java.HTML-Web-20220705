@@ -3,6 +3,7 @@ package filter;
 import java.io.IOException;
 
 import javax.servlet.FilterChain;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpFilter;
@@ -20,9 +21,9 @@ public class AuthCodeFilter extends HttpFilter {
 		if(userAuthCode.length() > 0 && authCode.length() > 0 && authCode.equalsIgnoreCase(userAuthCode)) {
 			chain.doFilter(request, response);
 		} else {
-			// 得到 request URL
-			System.out.println(request.getRequestURL());
-			response.sendRedirect(request.getRequestURL().toString());
+			// 重導到 report_login.jsp 頁面
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/report_login.jsp");
+			rd.forward(request, response);
 		}
 	}
 	

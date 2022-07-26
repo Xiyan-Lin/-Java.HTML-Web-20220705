@@ -25,6 +25,7 @@ public class AuthCodeImageServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("image/jpeg");
 		Random random = new Random();
 		// 產生認證碼
 		String authCode = String.format("%c%03d", random.nextInt(52) + 65, random.nextInt(1000));

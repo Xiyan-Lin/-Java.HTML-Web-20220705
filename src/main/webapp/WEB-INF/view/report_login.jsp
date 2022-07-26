@@ -7,8 +7,13 @@
 		<meta charset="UTF-8">
 		<title>Report Login</title>
 		<script>
+			var i = 0;
 			function changeAuthCodeImage() {
-				document.getElementById('authcodeimage').src="/JavaWeb_20220705/captcha/authcodeimage?i=" + new Date();
+				// 在網址列?後面加上一個會常變動的資料, 強迫瀏覽器去更新網址內容, 避免 cache 效應
+				//document.getElementById('authcodeimage').src="/JavaWeb_20220705/captcha/authcodeimage?" + new Date();
+				document.getElementById('authcodeimage').src="/JavaWeb_20220705/captcha/authcodeimage?" + (++i);
+				console.log("/JavaWeb_20220705/captcha/authcodeimage?" + new Date());
+				console.log("/JavaWeb_20220705/captcha/authcodeimage?" + (++i));
 			}
 		</script>
 	</head>

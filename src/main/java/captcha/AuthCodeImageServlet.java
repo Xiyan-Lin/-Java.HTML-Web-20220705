@@ -37,7 +37,22 @@ public class AuthCodeImageServlet extends HttpServlet {
 	
 	// 產出認證碼圖片串流
 	private BufferedImage getAuthCodeImage(String authCode) {
-		return null;
+		// 1. 建立圖像暫存區
+		BufferedImage img = new BufferedImage(80, 30, BufferedImage.TYPE_INT_RGB);
+		// 2. 建立畫布
+		Graphics g = img.getGraphics();
+		// 3. 設定畫布的顏色
+		g.setColor(Color.YELLOW);
+		// 4. 塗滿背景
+		g.fillRect(0, 0, 80, 30);
+		// 5. 設定顏色
+		g.setColor(Color.BLACK);
+		// 6. 設定字型(字體,字樣,尺寸)
+		g.setFont(new Font("Arial", Font.BOLD, 30));
+		// 7. 繪文字
+		g.drawString(authCode, 10, 23);
+		
+		return img;
 	} 
 	
 }

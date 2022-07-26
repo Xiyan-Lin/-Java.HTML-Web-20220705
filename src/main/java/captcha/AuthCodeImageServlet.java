@@ -6,6 +6,7 @@ import java.util.Random;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
@@ -52,9 +53,14 @@ public class AuthCodeImageServlet extends HttpServlet {
 		// 5. 設定顏色
 		g.setColor(Color.BLACK);
 		// 6. 設定字型(字體,字樣,尺寸)
-		g.setFont(new Font("Arial", Font.BOLD, 30));
 		// 7. 繪文字
-		g.drawString(authCode, 10, 23);
+		for(int i=0;i<authCode.length();i++) {
+			//Graphics2D g2 = (Graphics2D) g;
+			g.setFont(new Font("Arial", i%2==0?Font.BOLD:Font.ITALIC, new Random().nextInt(20) + 10));
+			g.drawString(authCode.charAt(i) + "", 5 + i*20, 23);
+		}
+		//g.setFont(new Font("Arial", Font.BOLD, 30));
+		//g.drawString(authCode, 10, 23);
 		
 		return img;
 	} 

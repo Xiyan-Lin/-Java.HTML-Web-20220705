@@ -12,6 +12,8 @@
 			<fieldset>
 				<legend>Report Login 一次性</legend>
 				Username: <input type="text" id="username" name="username" /><p />
+				驗證授權碼: <input type="text" id="userAuthCode" name="userAuthCode" > 
+				<img valign="middle" src="/JavaWeb_20220705/captcha/authcodeimage" /><p />
 				<button type="reset" class="pure-button pure-button-primary">重置</button>
 				<button type="submit" class="pure-button pure-button-primary">傳送</button>
 			</fieldset>

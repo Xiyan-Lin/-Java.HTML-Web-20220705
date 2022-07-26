@@ -32,7 +32,11 @@ public class AuthCodeImageServlet extends HttpServlet {
 		req.getSession().setAttribute("authCode", authCode);
 		
 		// 產出認證碼圖片串流
-		
+		try {
+			ImageIO.write(getAuthCodeImage(authCode), "JPEG", resp.getOutputStream());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	// 產出認證碼圖片串流

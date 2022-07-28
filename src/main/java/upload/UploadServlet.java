@@ -1,6 +1,7 @@
 package upload;
 
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.Enumeration;
 
@@ -25,7 +26,7 @@ public class UploadServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		PrintWriter out = resp.getWriter();
-		// 顯示上傳的 Header 資訊
+		// 顯示上傳的 Header 資訊 (HTTP 文件第二部分)
 		Enumeration<String> headerNames = req.getHeaderNames();
 		while (headerNames.hasMoreElements()) {
 			String headerName = headerNames.nextElement(); // 取得標頭名稱
@@ -34,7 +35,13 @@ public class UploadServlet extends HttpServlet {
 			out.println("<br />");
 		}
 		out.println("<hr>");
-		
+		// 顯示上傳的內容 (HTTP 文件第四部分)
+		InputStreamReader isr = new InputStreamReader(req.getInputStream());
+		char[] buffer = new char[1];
+		while(isr.read(buffer) != -1) {
+			out.print(buffer);
+		}
+		out.println("<hr>");
 	}
 	
 }

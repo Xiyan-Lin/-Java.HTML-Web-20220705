@@ -70,6 +70,7 @@ public class UploadServlet extends HttpServlet {
 					out.println("<br />");
 					// 圖片呈現
 					out.println(imgHtml);
+					out.println("<br />");
 					// 存檔前檢查 C:/upload 是否存在 ?
 					File file = new File("C:/upload");
 					if(!file.exists()) { // 若 C:/upload 不存在
@@ -78,6 +79,7 @@ public class UploadServlet extends HttpServlet {
 					// 圖片存檔
 					part.write(file.toString() + "/" + imageName);
 					out.println("圖片存檔至 C:/upload 成功 !");
+					out.println("<br />");
 					
 				} catch (Exception e) {
 					e.printStackTrace();

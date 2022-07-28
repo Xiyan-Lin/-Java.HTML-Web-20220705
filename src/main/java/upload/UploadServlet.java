@@ -1,9 +1,11 @@
 package upload;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.Enumeration;
 
 import javax.servlet.RequestDispatcher;
@@ -35,7 +37,7 @@ public class UploadServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		PrintWriter out = resp.getWriter();
-		// 找到 pname, price, file1
+		// 找到 pname, price
 		req.getParts().stream()
 			.filter(part -> part.getName().equals("pname") || part.getName().equals("price"))
 			.forEach(part -> {
@@ -43,6 +45,31 @@ public class UploadServlet extends HttpServlet {
 					String value = IOUtils.toString(part.getInputStream(), StandardCharsets.UTF_8.name());
 					out.println(part.getName() + " = " + value);
 					out.println("<p />");
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			});
+		
+		// 找到 file1
+		req.getParts().stream()
+			.filter(part -> part.getName().equals("file1"))
+			.forEach(part -> {
+				try {
+					// 將上傳的圖片以 base64 的編碼方式製作成 base64 圖片碼
+					// 製作步驟: InputStream -> byte[] -> base64 字串
+					InputStream is = part.getInputStream();
+					byte[] bytes = IOUtils.toByteArray(is);
+					String base64 = Base64.getEncoder().encodeToString(bytes);
+					// 建立 HTML <img src='data:image/png;base64, %s'> 標籤
+					String imgHtml = "<img src='data:image/png;base64, %s'>";
+					imgHtml = String.format(imgHtml, base64);
+					// 圖片名字
+					String imageName = part.getSubmittedFileName(); // 取得 client 端上傳的檔名
+					out.println("imageName = " + imageName);
+					out.println("<br />");
+					// 圖片呈現
+					out.println(imgHtml);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

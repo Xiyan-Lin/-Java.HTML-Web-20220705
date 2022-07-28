@@ -3,6 +3,7 @@ package upload;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.Enumeration;
 
 import javax.servlet.RequestDispatcher;
@@ -12,6 +13,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.io.IOUtils;
 
 @WebServlet("/servlet/upload")
 @MultipartConfig(
@@ -34,7 +37,17 @@ public class UploadServlet extends HttpServlet {
 		PrintWriter out = resp.getWriter();
 		// 找到 pname, price, file1
 		req.getParts().stream()
-			.filter(part -> part.getName().equals("pname"));
+			.filter(part -> part.getName().equals("pname") || part.getName().equals("price"))
+			.forEach(part -> {
+				try {
+					String value = IOUtils.toString(part.getInputStream(), StandardCharsets.UTF_8.name());
+					out.println(part.getName() + " = " + value);
+					out.println("<p />");
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			});
+		
 			
 	}
 	

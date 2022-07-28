@@ -7,12 +7,18 @@ import java.util.Enumeration;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/servlet/upload")
+@MultipartConfig(
+		fileSizeThreshold = 1024*1024*2, // 2MB
+		maxFileSize = 1024*1024*10, // 10MB
+		maxRequestSize = 1024*1024*50 // 50MB
+)
 public class UploadServlet extends HttpServlet {
 	
 	// 顯示/重導指定上傳的 JSP 頁面
@@ -23,6 +29,17 @@ public class UploadServlet extends HttpServlet {
 	}
 	
 	// 處理上傳後的程序
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		PrintWriter out = resp.getWriter();
+		// 找到 pname, price, file1
+		req.getParts().stream()
+			.filter(part -> part.getName().equals("pname"));
+			
+	}
+	
+	// 處理上傳後的程序
+	/*
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		PrintWriter out = resp.getWriter();
@@ -43,5 +60,6 @@ public class UploadServlet extends HttpServlet {
 		}
 		out.println("<hr>");
 	}
+	*/
 	
 }

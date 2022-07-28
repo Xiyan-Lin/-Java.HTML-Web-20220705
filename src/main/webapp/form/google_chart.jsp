@@ -4,7 +4,7 @@
   <head>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
+      google.charts.load('current', {'packages':['corechart', 'table']});
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
@@ -21,7 +21,8 @@
 
         var options = {
           title: 'My Daily Activities',
-          is3D: true
+          //is3D: true,
+          pieHole: 0.4
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -36,7 +37,8 @@
         var chart4 = new google.visualization.LineChart(document.getElementById('linechart'));
         chart4.draw(data, options);
         
-        
+        var chart5 = new google.visualization.Table(document.getElementById('tablechart'));
+        chart5.draw(data, {showRowNumber: true, width: '100%', height: '100%'});
       }
     </script>
   </head>
@@ -45,6 +47,7 @@
     <div id="barchart" style="width: 900px; height: 500px;"></div>
     <div id="columnchart" style="width: 900px; height: 500px;"></div>
     <div id="linechart" style="width: 900px; height: 500px;"></div>
+    <div id="tablechart" style="width: 900px; height: 500px;"></div>
   </body>
 </html>
     

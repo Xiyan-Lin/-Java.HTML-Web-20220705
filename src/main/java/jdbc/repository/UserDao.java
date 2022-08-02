@@ -95,7 +95,17 @@ public class UserDao {
 	
 	// 修改 user 資料列
 	public int update(Integer id, User user) {
-		
+		String sql = "update user set username=?, password=? where id=?";
+		int rowcount = 0;
+		try(PreparedStatement pstmt = getConnection().prepareStatement(sql)) {
+			pstmt.setString(1, user.getUsername());
+			pstmt.setString(2, user.getPassword());
+			pstmt.setInt(3, id);
+			rowcount = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return rowcount;
 	}
 	
 	

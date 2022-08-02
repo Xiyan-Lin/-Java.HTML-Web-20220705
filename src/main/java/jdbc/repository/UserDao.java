@@ -40,13 +40,12 @@ public class UserDao {
 					+ ")";
 		Connection conn = getConnection();
 		Statement stmt = conn.createStatement();
-		int row_count = stmt.executeUpdate(sql);
-		if(row_count == 1) {
-			System.out.println("user 資料表建立完成 !");
-		} else {
-			System.out.println("user資料表已存在 !");
-		}
+		stmt.executeUpdate(sql);
+		System.out.println("user 資料表建立完成 !");
 	}
 	
+	public static void main(String[] args) throws Exception {
+		new UserDao().createTable();
+	}
 	
 }

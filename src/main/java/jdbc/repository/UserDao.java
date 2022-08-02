@@ -124,7 +124,7 @@ public class UserDao {
 	
 	// get user 資料列
 	public User getUser(Integer id) {
-		String sql = "select id, username, password, createtime where id = ?";
+		String sql = "select id, username, password, createtime from user where id = ?";
 		User user = null;
 		try(PreparedStatement pstmt = getConnection().prepareStatement(sql)) {
 			pstmt.setInt(1, id);
@@ -153,8 +153,9 @@ public class UserDao {
 		//int rowcount = new UserDao().updatePassword(1, Base64.getEncoder().encodeToString("abcd".getBytes()));
 		//User user = new User("Tom", Base64.getEncoder().encodeToString("1234".getBytes()));
 		//int rowcount = new UserDao().update(1, user);
-		int rowcount = new UserDao().delete(3);
-		System.out.println(rowcount);
+		//int rowcount = new UserDao().delete(3);
+		//System.out.println(rowcount);
+		System.out.println(new UserDao().getUser(1));
 		
 	}
 	

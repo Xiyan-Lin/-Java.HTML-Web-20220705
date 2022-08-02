@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.PseudoColumnUsage;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Base64;
 
@@ -119,6 +120,26 @@ public class UserDao {
 			e.printStackTrace();
 		}
 		return rowcount;
+	}
+	
+	// get user 資料列
+	public User getUser(Integer id) {
+		String sql = "select id, username, password, createtime where id = ?";
+		User user = null;
+		try(PreparedStatement pstmt = getConnection().prepareStatement(sql)) {
+			pstmt.setInt(1, id);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				user = new User();
+				user.setId(rs.getInt("id"));
+				user.setUsername(rs.getString("username"));
+				user.setPassword(rs.getString("password"));
+				user.setCreatetime(rs.getDate("createtime"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return user;
 	}
 	
 	public static void main(String[] args) throws Exception {

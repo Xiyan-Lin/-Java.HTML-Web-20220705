@@ -6,7 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.PseudoColumnUsage;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Base64;
+import java.util.List;
 
 import jdbc.entity.User;
 
@@ -142,6 +144,27 @@ public class UserDao {
 		return user;
 	}
 	
+	// query user 全部資料列
+	public List<User> getUsers() {
+		String sql = "select id, username, password, createtime from user order by id";
+		List<User> users = new ArrayList<>();
+		try(Statement stmt = getConnection().createStatement()) {
+			ResultSet rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				User user = new User();
+				user.setId(rs.getInt("id"));
+				user.setUsername(rs.getString("username"));
+				user.setPassword(rs.getString("password"));
+				user.setCreatetime(rs.getDate("createtime"));
+				users.add(user);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return users;
+	}
+	
 	public static void main(String[] args) throws Exception {
 		//new UserDao().createDB();
 		//new UserDao().createTable();
@@ -155,8 +178,8 @@ public class UserDao {
 		//int rowcount = new UserDao().update(1, user);
 		//int rowcount = new UserDao().delete(3);
 		//System.out.println(rowcount);
-		System.out.println(new UserDao().getUser(1));
-		
+		//System.out.println(new UserDao().getUser(1));
+		System.out.println(new UserDao().getUsers());
 	}
 	
 }

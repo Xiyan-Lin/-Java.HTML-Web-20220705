@@ -108,7 +108,18 @@ public class UserDao {
 		return rowcount;
 	}
 	
-	
+	// 刪除 user 資料列
+	public int delete(Integer id) {
+		String sql = "delete from user where id=?";
+		int rowcount = 0;
+		try(PreparedStatement pstmt = getConnection().prepareStatement(sql)) {
+			pstmt.setInt(1, id);
+			rowcount = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return rowcount;
+	}
 	
 	public static void main(String[] args) throws Exception {
 		//new UserDao().createDB();
@@ -119,8 +130,9 @@ public class UserDao {
 		//new UserDao().add(new User("mary", Base64.getEncoder().encodeToString(password.getBytes())));
 		//int rowcount = new UserDao().updateUsername(1, "John");
 		//int rowcount = new UserDao().updatePassword(1, Base64.getEncoder().encodeToString("abcd".getBytes()));
-		User user = new User("Tom", Base64.getEncoder().encodeToString("1234".getBytes()));
-		int rowcount = new UserDao().update(1, user);
+		//User user = new User("Tom", Base64.getEncoder().encodeToString("1234".getBytes()));
+		//int rowcount = new UserDao().update(1, user);
+		int rowcount = new UserDao().delete(3);
 		System.out.println(rowcount);
 		
 	}

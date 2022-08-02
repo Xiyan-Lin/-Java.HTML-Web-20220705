@@ -113,10 +113,15 @@ public class UserDao {
 	public static void main(String[] args) throws Exception {
 		//new UserDao().createDB();
 		//new UserDao().createTable();
-		String password = "1234";
-		new UserDao().add(new User("john", Base64.getEncoder().encodeToString(password.getBytes())));
-		password = "5678";
-		new UserDao().add(new User("mary", Base64.getEncoder().encodeToString(password.getBytes())));
+		//String password = "1234";
+		//new UserDao().add(new User("john", Base64.getEncoder().encodeToString(password.getBytes())));
+		//password = "5678";
+		//new UserDao().add(new User("mary", Base64.getEncoder().encodeToString(password.getBytes())));
+		//int rowcount = new UserDao().updateUsername(1, "John");
+		//int rowcount = new UserDao().updatePassword(1, Base64.getEncoder().encodeToString("abcd".getBytes()));
+		User user = new User("Tom", Base64.getEncoder().encodeToString("1234".getBytes()));
+		int rowcount = new UserDao().update(1, user);
+		System.out.println(rowcount);
 		
 	}
 	

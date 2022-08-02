@@ -65,6 +65,41 @@ public class UserDao {
 	}
 	
 	
+	// 修改 user username 資料列
+	public int updateUsername(Integer id, String username) {
+		String sql = "update user set username=? where id=?";
+		int rowcount = 0;
+		try(PreparedStatement pstmt = getConnection().prepareStatement(sql)) {
+			pstmt.setString(1, username);
+			pstmt.setInt(2, id);
+			rowcount = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return rowcount;
+	}
+	
+	// 修改 user password 資料列
+	public int updatePassword(Integer id, String password) {
+		String sql = "update user set password=? where id=?";
+		int rowcount = 0;
+		try(PreparedStatement pstmt = getConnection().prepareStatement(sql)) {
+			pstmt.setString(1, password);
+			pstmt.setInt(2, id);
+			rowcount = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return rowcount;
+	}
+	
+	// 修改 user 資料列
+	public int update(Integer id, User user) {
+		
+	}
+	
+	
+	
 	public static void main(String[] args) throws Exception {
 		//new UserDao().createDB();
 		//new UserDao().createTable();

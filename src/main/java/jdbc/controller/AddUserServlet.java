@@ -22,7 +22,7 @@ public class AddUserServlet extends HttpServlet {
 		String password = req.getParameter("password");
 		int rowcount = userService.add(username, password);
 		
-		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/view/user/success");
+		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/view/user/success.jsp");
 		req.setAttribute("action", "add");
 		req.setAttribute("rowcount", rowcount);
 		rd.forward(req, resp);

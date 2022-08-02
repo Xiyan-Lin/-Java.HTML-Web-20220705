@@ -23,7 +23,7 @@ public class QueryUserServlet extends HttpServlet {
 		
 		List<User> users = userService.getUsers();
 		
-		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/view/user/index");
+		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/view/user/index.jsp");
 		req.setAttribute("users", users);
 		rd.forward(req, resp);
 	}

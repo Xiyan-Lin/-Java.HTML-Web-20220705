@@ -22,7 +22,7 @@ public class GetUserServlet extends HttpServlet {
 		Integer id = Integer.valueOf(req.getParameter("id"));
 		User user = userService.getUser(id);
 		
-		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/view/user/update");
+		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/view/user/update.jsp");
 		req.setAttribute("user", user);
 		rd.forward(req, resp);
 	}

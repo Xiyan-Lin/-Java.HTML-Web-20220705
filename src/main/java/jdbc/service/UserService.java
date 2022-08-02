@@ -1,6 +1,7 @@
 package jdbc.service;
 
 import java.util.Base64;
+import java.util.List;
 
 import jdbc.entity.User;
 import jdbc.repository.UserDao;
@@ -29,4 +30,17 @@ public class UserService {
 		User user = new User(username, encodePassword);
 		return userDao.update(id, user);
 	}
+	
+	public int delete(Integer id) {
+		return userDao.delete(id);
+	}
+	
+	public User getUser(Integer id) {
+		return userDao.getUser(id);
+	}
+	
+	public List<User> getUsers() {
+		return userDao.getUsers();
+	}
+	
 }

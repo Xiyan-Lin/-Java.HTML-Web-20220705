@@ -1,0 +1,30 @@
+{
+	"folders": {},
+	"connections": {
+		"sqlite_jdbc-1825e5f040c-4716b7fd73f47f24": {
+			"provider": "sqlite",
+			"driver": "sqlite_jdbc",
+			"name": "webdb.db",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"database": "C:\\Users\\MB-207\\eclipse-workspace\\JavaWeb_20220705\\db\\webdb.db",
+				"url": "jdbc:sqlite:C:\\Users\\MB-207\\eclipse-workspace\\JavaWeb_20220705\\db\\webdb.db",
+				"type": "dev",
+				"auth-model": "native",
+				"handlers": {}
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "开发",
+			"color": "255,255,255",
+			"description": "常规开发数据库",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false,
+			"auto-close-transactions": false
+		}
+	}
+}

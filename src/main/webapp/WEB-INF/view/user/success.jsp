@@ -13,8 +13,13 @@
 </head>
 <body style="padding: 15px">
 	<form class="pure-form" method="get" action="${ pageContext.request.contextPath }/users">
-		${ action } 成功 <p />
-		<button type="submit" class="pure-button pure-button-primary">回首頁</button>
+		<fieldset>
+		 	<legend>
+		 		<img src="${ pageContext.request.contextPath }/images/user.png" width="40" valign="middle">
+				${ action } 成功
+			</legend>	
+			<button type="submit" class="pure-button pure-button-primary">回首頁</button>
+		</fieldset>	
 	</form>
 </body>
 </html>

@@ -10,7 +10,9 @@ public class UserService {
 	private UserDao userDao = new UserDao();
 	
 	public int add(String username, String password) {
-		User user = new User(username, password);
+		// 將 password 編碼
+		String encodePassword = Base64.getEncoder().encodeToString(password.getBytes());
+		User user = new User(username, encodePassword);
 		return userDao.add(user);
 	}
 	

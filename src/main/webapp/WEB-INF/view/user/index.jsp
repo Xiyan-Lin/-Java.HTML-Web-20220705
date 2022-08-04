@@ -51,7 +51,7 @@ ${ users }
 		 					<td>${ user.username }</td>
 		 					<td>${ user.password }</td>
 		 					<td>${ user.createtime }</td>
-		 					<td><a href="#">修改</a></td>
+		 					<td><a href="${ pageContext.request.contextPath }/user/get?id=${ user.id }">修改</a></td>
 		 					<td><a href="#">刪除</a></td>
 		 				</tr>
 		 			</c:forEach>

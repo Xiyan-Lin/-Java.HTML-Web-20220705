@@ -15,7 +15,10 @@ ${ users }
 <body style="padding: 15px">
 	<form class="pure-form" method="post" action="${ pageContext.request.contextPath }/user/add">
 		 <fieldset>
-		 	<legend>User form</legend>
+		 	<legend>
+		 		<img src="${ pageContext.request.contextPath }/images/user.png" width="40" valign="middle"> 
+		 		User form
+		 	</legend>
 		 	Username: <input type="text" id="username" name="username" placeholder="請輸入使用者名稱" /><p />
 		 	Password: <input type="password" id="password" name="password" placeholder="請輸入使用者密碼" /><p />
 		 	<button type="reset" class="pure-button pure-button-primary">清除</button>
@@ -24,7 +27,10 @@ ${ users }
 	</form>
 	<form class="pure-form">
 		<fieldset>
-		 	<legend>User list</legend>
+		 	<legend>
+		 		<img src="${ pageContext.request.contextPath }/images/users.png" width="40" valign="middle"> 
+		 		User list
+		 	</legend>
 		 	<table class="pure-table pure-table-bordered">
 		 		<thead>
 		 			<tr>

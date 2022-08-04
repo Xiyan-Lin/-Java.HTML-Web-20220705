@@ -28,7 +28,6 @@ ${ user }
 		 	<button type="button"
 		 			onclick="window.location.href='${ pageContext.request.contextPath }/users';" 
 		 			class="pure-button pure-button-primary">回首頁</button>
-		 	<button type="reset" class="pure-button pure-button-primary">清除</button>
 		 	<button type="submit" class="pure-button pure-button-primary">修改</button>
 		 </fieldset>
 	</form>

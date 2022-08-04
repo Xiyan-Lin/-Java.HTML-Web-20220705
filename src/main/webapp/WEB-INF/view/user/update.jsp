@@ -25,6 +25,9 @@ ${ user }
 		 	<input type="hidden" name="id" value="${ user.id }">
 		 	Username: <input type="text" id="username" name="username" placeholder="請輸入使用者名稱" value="${ user.username }" /><p />
 		 	Password: <input type="password" id="password" name="password" placeholder="請輸入使用者密碼" value="${ user.password }" /><p />
+		 	<button type="button"
+		 			onclick="window.location.href='${ pageContext.request.contextPath }/users';" 
+		 			class="pure-button pure-button-primary">回首頁</button>
 		 	<button type="reset" class="pure-button pure-button-primary">清除</button>
 		 	<button type="submit" class="pure-button pure-button-primary">修改</button>
 		 </fieldset>

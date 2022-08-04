@@ -19,10 +19,26 @@ ${ users }
 				window.location.href = '${ pageContext.request.contextPath }/user/delete?id=' + id;
 			}
 		}
+		
+		function checkUserForm() {
+			var username = window.getElementById('username').value;
+			var password = window.getElementById('password').value;
+			if(username == '') {
+				alert('使用者名稱不可空白!')
+				window.getElementById('username').focus();
+				return false;
+			}
+			if(password == '') {
+				alert('使用者密碼不可空白!')
+				window.getElementById('password').focus();
+				return false;
+			}
+			return true;
+		}
 	</script>
 </head>
 <body style="padding: 15px">
-	<form class="pure-form" method="post" action="${ pageContext.request.contextPath }/user/add">
+	<form class="pure-form" method="post" onsubmit="return checkUserForm()" action="${ pageContext.request.contextPath }/user/add">
 		 <fieldset>
 		 	<legend>
 		 		<img src="${ pageContext.request.contextPath }/images/user.png" width="40" valign="middle"> 

@@ -40,6 +40,8 @@ ${ users }
 		 				<th>username</th>
 		 				<th>password(decode)</th>
 		 				<th>createtime</th>
+		 				<th>update</th>
+		 				<th>delete</th>
 		 			</tr>
 		 		</thead>
 		 		<tbody>
@@ -49,6 +51,8 @@ ${ users }
 		 					<td>${ user.username }</td>
 		 					<td>${ user.password }</td>
 		 					<td>${ user.createtime }</td>
+		 					<td><a href="#">修改</a></td>
+		 					<td><a href="#">刪除</a></td>
 		 				</tr>
 		 			</c:forEach>
 		 		</tbody>

@@ -16,7 +16,7 @@ ${ users }
 	<script>
 		function deleteUserById(id) {
 			if(confirm('是否要刪除 id:' + id + ' 的資料 ?')) {
-				
+				window.location.href = '${ pageContext.request.contextPath }/user/delete?id=' + id;
 			}
 		}
 	</script>

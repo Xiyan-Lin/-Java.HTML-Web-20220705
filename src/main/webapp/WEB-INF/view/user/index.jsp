@@ -59,7 +59,7 @@ ${ users }
 		 					<td>${ user.password }</td>
 		 					<td>${ user.createtime }</td>
 		 					<td><a href="${ pageContext.request.contextPath }/user/get?id=${ user.id }">修改</a></td>
-		 					<td><a href="#" onclick="deleteUserById(${ user.id })">刪除</a></td>
+		 					<td><a href="javascript:deleteUserById(${ user.id })">刪除</a></td>
 		 				</tr>
 		 			</c:forEach>
 		 		</tbody>

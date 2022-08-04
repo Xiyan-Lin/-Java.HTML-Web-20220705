@@ -1,7 +1,9 @@
+<%@page import="jdbc.entity.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+    
 <!DOCTYPE html>
 <!--  
 ${ users }
@@ -34,7 +36,10 @@ ${ users }
 		 	<table class="pure-table pure-table-bordered">
 		 		<thead>
 		 			<tr>
-		 				<th>id</th><th>username</th><th>password</th><th>createtime</th>
+		 				<th>id</th>
+		 				<th>username</th>
+		 				<th>password(decode)</th>
+		 				<th>createtime</th>
 		 			</tr>
 		 		</thead>
 		 		<tbody>

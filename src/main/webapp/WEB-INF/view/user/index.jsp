@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>    
 <!DOCTYPE html>
 <!--  
 ${ users }
@@ -19,6 +21,28 @@ ${ users }
 		 	<button type="reset" class="pure-button pure-button-primary">清除</button>
 		 	<button type="submit" class="pure-button pure-button-primary">新增</button>
 		 </fieldset>
+	</form>
+	<form class="pure-form">
+		<fieldset>
+		 	<legend>User list</legend>
+		 	<table class="pure-table pure-table-bordered">
+		 		<thead>
+		 			<tr>
+		 				<th>id</th><th>username</th><th>password</th><th>createtime</th>
+		 			</tr>
+		 		</thead>
+		 		<tbody>
+		 			<c:forEach var="user" items="${ users }">
+		 				<tr>
+		 					<td>${ user.id }</td>
+		 					<td>${ user.username }</td>
+		 					<td>${ user.password }</td>
+		 					<td>${ user.createtime }</td>
+		 				</tr>
+		 			</c:forEach>
+		 		</tbody>
+		 	</table>
+		</fieldset> 	
 	</form>
 	
 </body>

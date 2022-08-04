@@ -13,6 +13,13 @@ ${ users }
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@2.1.0/build/pure-min.css">
 	<meta charset="UTF-8">
 	<title>User Index</title>
+	<script>
+		function deleteUserById(id) {
+			if(confirm('是否要刪除 id:' + id + ' 的資料 ?')) {
+				
+			}
+		}
+	</script>
 </head>
 <body style="padding: 15px">
 	<form class="pure-form" method="post" action="${ pageContext.request.contextPath }/user/add">
@@ -52,7 +59,7 @@ ${ users }
 		 					<td>${ user.password }</td>
 		 					<td>${ user.createtime }</td>
 		 					<td><a href="${ pageContext.request.contextPath }/user/get?id=${ user.id }">修改</a></td>
-		 					<td><a href="#">刪除</a></td>
+		 					<td><a href="#" onclick="deleteUserById(${ user.id })">刪除</a></td>
 		 				</tr>
 		 			</c:forEach>
 		 		</tbody>

@@ -17,7 +17,7 @@ public class DeleteUserServlet extends HttpServlet {
 	private UserService userService = new UserService();
 	
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Integer id = Integer.valueOf(req.getParameter("id"));
 		int rowcount = userService.delete(id);
 		

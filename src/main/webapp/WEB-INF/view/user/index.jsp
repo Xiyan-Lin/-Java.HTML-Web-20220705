@@ -21,16 +21,16 @@ ${ users }
 		}
 		
 		function checkUserForm() {
-			var username = window.getElementById('username').value;
-			var password = window.getElementById('password').value;
+			var username = window.document.getElementById('username').value;
+			var password = window.document.getElementById('password').value;
 			if(username == '') {
 				alert('使用者名稱不可空白!')
-				window.getElementById('username').focus();
+				window.document.getElementById('username').focus();
 				return false;
 			}
 			if(password == '') {
 				alert('使用者密碼不可空白!')
-				window.getElementById('password').focus();
+				window.document.getElementById('password').focus();
 				return false;
 			}
 			return true;

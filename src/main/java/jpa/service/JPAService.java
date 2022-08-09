@@ -56,8 +56,20 @@ public class JPAService {
 		return list;
 	}
 	
-	// 查詢多筆透過 
+	// 查詢多筆 by name
+	public List<Person> findByName(String name) {
+		return em.createNamedQuery("Person.findByName")
+				.setParameter("nameValue", name)
+				.getResultList();
+	}
 	
+	// 查詢多筆 age 區間
+	public List<Person> findByAgeBetween(Integer min, Integer max) {
+		return em.createNamedQuery("Person.findByAgeBetween")
+				 .setParameter("min", min)
+				 .setParameter("max", max)
+				 .getResultList();
+	}
 }
 
 

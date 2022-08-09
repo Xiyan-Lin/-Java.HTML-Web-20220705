@@ -15,17 +15,9 @@ import jpa.entity.Person;
 import jpa.service.JPAService;
 
 @WebServlet("/jpa/person/add")
-public class JPAAddPersonServlet extends HttpServlet {
+public class JPAAddPersonServlet extends JPABaseServlet {
 	
-	private JPAService jpaService;
-
-	@Override
-	public void init() throws ServletException {
-		super.init();
-		jpaService = new JPAService();
-	}
-
-	@Override
+		@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		String name = new Faker().name().lastName();
@@ -35,7 +27,7 @@ public class JPAAddPersonServlet extends HttpServlet {
 		person.setName(name);
 		person.setAge(age);
 		
-		jpaService.addPerson(person);
+		getJPAService().addPerson(person);
 		
 		resp.getWriter().print("Add ok: " + person);
 		

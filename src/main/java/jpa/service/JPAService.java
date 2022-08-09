@@ -18,10 +18,17 @@ public class JPAService {
 		em = emf.createEntityManager();
 	}
 	
+	// 新增
 	public synchronized void addPerson(Person person) {
 		EntityTransaction etx = em.getTransaction(); // 取得交易物件(交易:新增,修改,刪除)
 		etx.begin(); // 開始
 		em.persist(person);  // 存入 person
 		etx.commit(); // 提交
 	}
+	
+	// 查詢單筆
+	public Person getPerson(Integer id) {
+		return em.find(Person.class, id);
+	}
+	
 }

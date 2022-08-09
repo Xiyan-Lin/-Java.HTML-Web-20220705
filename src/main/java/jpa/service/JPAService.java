@@ -1,9 +1,12 @@
 package jpa.service;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import jpa.entity.Person;
 
@@ -31,4 +34,19 @@ public class JPAService {
 		return em.find(Person.class, id);
 	}
 	
+	// 查詢全部
+	public List<Person> queryAllPerson() {
+		Query query = em.createQuery("select p from Person p"); // JPQL
+		List<Person> list = query.getResultList();
+		return list;
+	}
+	
 }
+
+
+
+
+
+
+
+

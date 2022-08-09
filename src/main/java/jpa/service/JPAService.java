@@ -36,10 +36,27 @@ public class JPAService {
 	
 	// 查詢全部
 	public List<Person> queryAllPerson() {
-		Query query = em.createQuery("select p from Person p"); // JPQL
+		//Query query = em.createQuery("select p from Person p"); // JPQL
+		//Query query = em.createQuery("from Person p", Person.class); // JPQL
+		
+		Query query = em.createNamedQuery("Person.findAll");  // NamedQuery 版
 		List<Person> list = query.getResultList();
 		return list;
 	}
+	
+	// 查詢多筆 by age
+	public List<Person> queryPersonByAge(Integer age) {
+		//String sql = "select p from Person p where p.age >= :ageValue";
+		//Query query = em.createQuery(sql);
+		//query.setParameter("ageValue", age);
+	
+		Query query = em.createNamedQuery("Person.findByAge")
+						.setParameter("ageValue", age); // NamedQuery 版
+		List<Person> list = query.getResultList();
+		return list;
+	}
+	
+	// 查詢多筆透過 
 	
 }
 

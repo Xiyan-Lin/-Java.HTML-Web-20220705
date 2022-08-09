@@ -15,9 +15,10 @@ public class JPAQueryPersonServlet extends JPABaseServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		PrintWriter out = resp.getWriter();
 		//out.println(getJPAService().getPerson(1));
-		out.println(getJPAService().queryAllPerson());
-		out.println(getJPAService().queryPersonByAge(30));
-		
+		//out.println(getJPAService().queryAllPerson());
+		//out.println(getJPAService().queryPersonByAge(30));
+		out.println(getJPAService().findByName("%ch%"));
+		out.println(getJPAService().findByAgeBetween(28, 32));
 	}
 	
 	

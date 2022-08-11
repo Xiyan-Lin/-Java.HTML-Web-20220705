@@ -38,7 +38,10 @@ public class PersonServlet extends HttpServlet {
 	}
 	
 	private Integer checkPath(HttpServletRequest req) {
+		String servletPath = req.getServletPath();
 		String pathInfo = req.getPathInfo();
+		System.out.println("servletPath = " + servletPath);
+		System.out.println("pathInfo = " + pathInfo);
 		if (pathInfo.length() == 1 && pathInfo.charAt(0) == '/') {
 			return null;
 		} else if(pathInfo.length() > 1 && pathInfo.charAt(0) == '/') {

@@ -32,15 +32,22 @@ public class PersonServlet extends HttpServlet {
 			Person person = jpaService.getPerson(id);
 			resp.getWriter().print(gson.toJson(person)); // 將 person 轉 json 格式
 		}
-		
 	}
 	
 	// 路徑範例: /rest/person/
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		if(checkPath(req) != null) return;
-		
-		resp.getWriter().print("單筆新增");
+		// 取得資料
+		String name = req.getParameter("name");
+		Integer age = req.getParameter("age") == null ? 0 : Integer.parseInt(req.getParameter("age"));
+		// person 物件封裝
+		Person person = new Person();
+		person.setName(name);
+		person.setAge(age);
+		// 新增
+		jpaService.addPerson(person);
+		resp.getWriter().print(gson.toJson(person));
 		
 	}
 	

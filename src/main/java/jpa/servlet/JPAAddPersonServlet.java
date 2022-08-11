@@ -17,7 +17,7 @@ import jpa.service.JPAService;
 @WebServlet("/jpa/person/add")
 public class JPAAddPersonServlet extends JPABaseServlet {
 	
-		@Override
+	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		String name = new Faker().name().lastName();

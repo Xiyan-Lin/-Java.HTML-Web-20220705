@@ -70,6 +70,17 @@ public class JPAService {
 				 .setParameter("max", max)
 				 .getResultList();
 	}
+	
+	// 修改
+	public synchronized void updatePerson(Person person) {
+		// 判斷是否有此資料 ?
+		if (getPerson(person.getId()) == null) return;
+		// 修改程序
+		EntityTransaction etx = em.getTransaction(); // 取得交易物件(交易:新增,修改,刪除)
+		etx.begin(); // 開始
+		em.merge(person);  // 修改 person
+		etx.commit(); // 提交
+	}
 }
 
 

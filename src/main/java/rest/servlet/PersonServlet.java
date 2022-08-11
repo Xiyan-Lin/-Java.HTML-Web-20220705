@@ -23,10 +23,31 @@ import jpa.service.JPAService;
 public class PersonServlet extends HttpServlet {
 	private JPAService jpaService = new JPAService();
 	private Gson gson = new Gson();
-	// 路徑範例: /rest/person/
-	// 路徑範例: /rest/person/5
+	// 一般查詢路徑範例: /rest/person/
+	// 一般查詢路徑範例: /rest/person/5
+	// 功能性查詢路徑範例: /rest/person/?age=30
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println(req.getParameterMap().size());
+		// 功能性查詢
+		// 功能性查詢因為一定有帶入參數, 所以 req.getParameterMap().size() 一定會 > 0
+		if(req.getParameterMap().size() > 0) {
+			Integer age = req.getParameter("age") == null? null : Integer.parseInt(req.getParameter("age"));
+			String name = req.getParameter("name");
+			if(age != null) {
+				List<Person> list = jpaService.queryPersonByAge(age);
+				resp.getWriter().print(gson.toJson(list)); // 將 person 轉 json 格式
+				return;
+			}
+			if(name != null) {
+				List<Person> list = jpaService.findByName("%" + name + "%");
+				resp.getWriter().print(gson.toJson(list)); // 將 person 轉 json 格式
+				return;
+			}
+			return;
+		}
+		
+		// 一般查詢
 		Integer id = checkPath(req); 
 		if(id == null) {
 			// 多筆查詢

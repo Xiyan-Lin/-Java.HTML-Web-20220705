@@ -1,9 +1,14 @@
 package rest.servlet;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletInputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -56,10 +61,35 @@ public class PersonServlet extends HttpServlet {
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Integer id = checkPath(req);
 		if(id == null) return;
-		String name = req.getParameter("name");
-		String age = req.getParameter("age");
 		
-		resp.getWriter().println("單筆修改, id=" + id + ", name=" + name + ", age=" + age);
+		// 自行分解串流資料
+		// byte[] -> char[] -> String
+		ServletInputStream sis = req.getInputStream(); // byte[]
+		InputStreamReader isr = new InputStreamReader(sis); // byte[] 轉 char[]
+		BufferedReader br = new BufferedReader(isr); // char[] 轉 String
+		String args = br.readLine(); // String
+		// 範例: name=UUU&age=19
+		// 轉 Map
+		Map<String, String> map = new LinkedHashMap<>();
+		for(String str : args.split("&")) {
+			String[] array = str.split("=");
+			map.put(array[0], array[1]);
+		}
+				
+		String name = map.get("name");
+		Integer age = map.get("age") == null ? 0 : Integer.parseInt(map.get("age"));
+		
+		// 修改
+		Person person = new Person();
+		person.setId(id);
+		person.setName(name);
+		person.setAge(age);
+		jpaService.updatePerson(person);
+		resp.getWriter().print(gson.toJson(person));
+		
+//		resp.getWriter().println("單筆修改, id=" + id + ", name=" + name + ", age=" + age);
+//		resp.getWriter().println("args=" + args);
+//		resp.getWriter().println("map=" + map);
 	}
 	
 	// 路徑範例: /rest/person/3

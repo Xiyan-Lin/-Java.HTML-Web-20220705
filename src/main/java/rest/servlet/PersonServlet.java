@@ -26,6 +26,8 @@ public class PersonServlet extends HttpServlet {
 	// 一般查詢路徑範例: /rest/person/
 	// 一般查詢路徑範例: /rest/person/5
 	// 功能性查詢路徑範例: /rest/person/?age=30
+	// 功能性查詢路徑範例: /rest/person/?name=ch
+	// 功能性查詢路徑範例: /rest/person/?min=20&max=30
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println(req.getParameterMap().size());

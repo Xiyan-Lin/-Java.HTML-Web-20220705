@@ -1,6 +1,7 @@
 package rest.servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,15 +9,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
+import jpa.entity.Person;
+import jpa.service.JPAService;
+
 @WebServlet("/rest/person/*")
 public class PersonServlet extends HttpServlet {
+	private JPAService jpaService = new JPAService();
+	private Gson gson = new Gson();
 	// 路徑範例: /rest/person/
 	// 路徑範例: /rest/person/5
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Integer id = checkPath(req); 
 		if(id == null) {
-			resp.getWriter().println("多筆查詢");
+			List<Person> list = jpaService.queryAllPerson(); // 取得所有 person 資料
+			resp.getWriter().print(gson.toJson(list)); // 將 person 轉 json 格式
 		} else {
 			resp.getWriter().println("單筆查詢, id=" + id);
 		}

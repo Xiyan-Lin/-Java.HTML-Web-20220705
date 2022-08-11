@@ -24,10 +24,13 @@ public class PersonServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Integer id = checkPath(req); 
 		if(id == null) {
+			// 多筆查詢
 			List<Person> list = jpaService.queryAllPerson(); // 取得所有 person 資料
 			resp.getWriter().print(gson.toJson(list)); // 將 person 轉 json 格式
 		} else {
-			resp.getWriter().println("單筆查詢, id=" + id);
+			// 單筆查詢
+			Person person = jpaService.getPerson(id);
+			resp.getWriter().print(gson.toJson(person)); // 將 person 轉 json 格式
 		}
 		
 	}

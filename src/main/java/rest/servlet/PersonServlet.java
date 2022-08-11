@@ -98,7 +98,8 @@ public class PersonServlet extends HttpServlet {
 		Integer id = checkPath(req);
 		if(id == null) return;
 		
-		resp.getWriter().println("單筆刪除, id=" + id);
+		jpaService.deletePerson(id);
+		resp.getWriter().println(id);
 	}
 	
 	private Integer checkPath(HttpServletRequest req) {

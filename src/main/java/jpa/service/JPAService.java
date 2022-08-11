@@ -81,6 +81,18 @@ public class JPAService {
 		em.merge(person);  // 修改 person
 		etx.commit(); // 提交
 	}
+	
+	// 刪除
+	public synchronized void deletePerson(Integer id) {
+		// 判斷是否有此資料 ?
+		Person person = getPerson(id); 
+		if (person == null) return;
+		// 修改程序
+		EntityTransaction etx = em.getTransaction(); // 取得交易物件(交易:新增,修改,刪除)
+		etx.begin(); // 開始
+		em.remove(person);  // 刪除 person
+		etx.commit(); // 提交
+	}
 }
 
 

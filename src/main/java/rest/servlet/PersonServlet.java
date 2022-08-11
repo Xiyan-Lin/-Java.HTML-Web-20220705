@@ -56,8 +56,10 @@ public class PersonServlet extends HttpServlet {
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Integer id = checkPath(req);
 		if(id == null) return;
+		String name = req.getParameter("name");
+		String age = req.getParameter("age");
 		
-		resp.getWriter().println("單筆修改, id=" + id);
+		resp.getWriter().println("單筆修改, id=" + id + ", name=" + name + ", age=" + age);
 	}
 	
 	// 路徑範例: /rest/person/3

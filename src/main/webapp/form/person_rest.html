@@ -26,11 +26,15 @@
 					document.getElementById('name').value = person.name;
 					document.getElementById('age').value = person.age;
 					document.getElementById('person_form').setAttribute("onsubmit", "return updatePerson()");
+					document.getElementById('add_button').disabled = true;
+					document.getElementById('update_button').disabled = false;
+					document.getElementById('delete_button').disabled = false;
 				});
 			}
 			
 			// 修改資料
 			function updatePerson() {
+				var id = document.getElementById('id').value;
 				var name = document.getElementById('name').value;
 				var age = document.getElementById('age').value;
 				var data = 'name=' + name + '&age=' + age;
@@ -39,6 +43,11 @@
 				var method = {method: 'PUT', body: data, headers: {'content-type': 'application/x-www-form-urlencoded'}};
 				fetch(url, method).then((response)=>{
 					if(response.status == 200) {
+						document.getElementById('person_form').reset();
+						document.getElementById('person_form').setAttribute("onsubmit", "return addPerson()");
+						document.getElementById('add_button').disabled = false;
+						document.getElementById('update_button').disabled = true;
+						document.getElementById('delete_button').disabled = true;
 						queryPerson();
 					} else {
 						alert('修改失敗: ' + response.status);
@@ -123,10 +132,9 @@
 							序號: <input type="text" id="id" name="id" readonly="readonly"><p />
 							姓名: <input type="text" id="name" name="name" required="required"><p />
 							年齡: <input type="number" id="age" name="age" required="required"><p />
-							<button type="reset" class="pure-button">清除</button>
-							<button type="submit" class="button-success pure-button">新增</button>
-							<button type="submit" class="button-warning pure-button">修改</button>
-							<button type="submit" class="button-error pure-button">刪除</button>
+							<button type="submit" id="add_button" class="button-success pure-button">新增</button>
+							<button type="submit" id="update_button" class="button-warning pure-button" disabled="true">修改</button>
+							<button type="submit" id="delete_button" class="button-error pure-button" disabled="true">刪除</button>
 						</fieldset>
 					</form>
 				</td>

@@ -8,7 +8,16 @@
 		<script>
 			// 單筆資料
 			function getPerson(id) {
-				console.log(id);	
+				console.log(id);
+				var url = '/JavaWeb_20220705/rest/person/' + id;
+				var method = {method: 'GET'};
+				fetch(url, method)
+				.then((response)=>{
+					return response.text();
+				})
+				.then((json_str)=>{
+					console.log(json_str);
+				});
 			}
 			
 			// 新增資料

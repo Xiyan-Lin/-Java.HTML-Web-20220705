@@ -23,7 +23,8 @@
 					console.log(array);
 					console.log(typeof(array));
 					console.log(array.length);
-					
+					// 加入筆數
+					document.getElementById('person_count').innerText = array.length;
 					for(var i=0;i<array.length;i++) {
 						var row = '<tr><td>' + array[i].id + '</td><td>' + array[i].name + '</td><td>' + array[i].age + '</td></tr>';
 						document.getElementById('person_list').insertAdjacentHTML('afterend', row); // 最新的一筆在最上面
@@ -68,7 +69,7 @@
 				<td valign="top" width="50%">
 					<form class="pure-form">
 						<fieldset>
-							<legend>Person 列表</legend>
+							<legend>Person 列表 ( <span id="person_count"></span> 筆 )</legend>
 							<table class="pure-table pure-table-bordered">
 								<thead>
 									<tr>

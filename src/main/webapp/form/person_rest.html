@@ -110,8 +110,7 @@
 				var id = document.getElementById('id').value;
 				var url = '/JavaWeb_20220705/rest/person/' + id;
 				var method = {method: 'DELETE'};
-				fetch(url, method)
-				.then((response)=>{
+				fetch(url, method).then((response)=>{
 					if(response.status == 200) {
 						alert('刪除成功');
 					} else {

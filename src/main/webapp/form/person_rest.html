@@ -24,7 +24,10 @@
 					console.log(typeof(array));
 					console.log(array.length);
 					
-					document.getElementById('person_list').innerText = json_str;
+					for(var i=0;i<array.length;i++) {
+						var row = '<tr><td>' + array[i].id + '</td><td>' + array[i].name + '</td><td>' + array[i].age + '</td></tr>';
+						document.getElementById('person_list').insertAdjacentHTML('afterbegin', row);
+					}
 				});
 			}
 			

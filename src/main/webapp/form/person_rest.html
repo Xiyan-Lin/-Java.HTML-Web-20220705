@@ -6,10 +6,19 @@
 		<meta charset="UTF-8">
 		<title>Person Rest</title>
 		<script>
+			// 查詢所有資料
+			function queryPerson() {
+				var url = '/JavaWeb_20220705/rest/person/';
+				var method = {method: 'GET'};
+				fetch(url, method).then((response)=>{
+					console.log(response);
+				});
+			}
 			
 			// 頁面載入完成後要做的事
 			window.onload = (event) =>{
 			    console.log('Page Loaded');
+			    queryPerson();
 			};
 		</script>
 	</head>

@@ -6,10 +6,11 @@
 		<meta charset="UTF-8">
 		<title>Person Rest</title>
 		<script>
+			var domain = 'http://localhost:8080';
 			// 單筆資料
 			function getPerson(id) {
 				console.log(id);
-				var url = '/JavaWeb_20220705/rest/person/' + id;
+				var url = domain + '/JavaWeb_20220705/rest/person/' + id;
 				var method = {method: 'GET'};
 				fetch(url, method)
 				.then((response)=>{
@@ -41,7 +42,7 @@
 				var age = document.getElementById('age').value;
 				var data = 'name=' + name + '&age=' + age;
 				
-				var url = '/JavaWeb_20220705/rest/person/' + id;
+				var url = domain + '/JavaWeb_20220705/rest/person/' + id;
 				var method = {method: 'PUT', body: data, headers: {'content-type': 'application/x-www-form-urlencoded'}};
 				fetch(url, method).then((response)=>{
 					if(response.status == 200) {
@@ -61,7 +62,7 @@
 				var data = 'name=' + name + '&age=' + age;
 				console.log(data);
 				
-				var url = '/JavaWeb_20220705/rest/person/';
+				var url = domain + '/JavaWeb_20220705/rest/person/';
 				var method = {method: 'POST', body: data, headers: {'content-type': 'application/x-www-form-urlencoded'}};
 				fetch(url, method).then((response)=>{
 					console.log(response);
@@ -77,7 +78,7 @@
 			
 			// 查詢所有資料
 			function queryPerson() {
-				var url = '/JavaWeb_20220705/rest/person/';
+				var url = domain + '/JavaWeb_20220705/rest/person/';
 				var method = {method: 'GET'};
 				fetch(url, method)
 				.then((response)=>{
@@ -105,7 +106,7 @@
 			// 刪除使用者
 			function deletePerson() {
 				var id = document.getElementById('id').value;
-				var url = '/JavaWeb_20220705/rest/person/' + id;
+				var url = domain + '/JavaWeb_20220705/rest/person/' + id;
 				var method = {method: 'DELETE'};
 				fetch(url, method).then((response)=>{
 					if(response.status == 200) {

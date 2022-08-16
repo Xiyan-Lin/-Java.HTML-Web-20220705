@@ -22,9 +22,11 @@
 				.then((json_str)=>{
 					console.log(json_str);
 					var person = JSON.parse(json_str);
+					// 將資料配置到 form 表單欄位中
 					document.getElementById('id').value = person.id;
 					document.getElementById('name').value = person.name;
 					document.getElementById('age').value = person.age;
+					// 變更 onsubmit 與 button 狀態
 					document.getElementById('person_form').setAttribute("onsubmit", "return updatePerson()");
 					document.getElementById('add_button').disabled = true;
 					document.getElementById('update_button').disabled = false;
@@ -43,12 +45,7 @@
 				var method = {method: 'PUT', body: data, headers: {'content-type': 'application/x-www-form-urlencoded'}};
 				fetch(url, method).then((response)=>{
 					if(response.status == 200) {
-						document.getElementById('person_form').reset();
-						document.getElementById('person_form').setAttribute("onsubmit", "return addPerson()");
-						document.getElementById('add_button').disabled = false;
-						document.getElementById('update_button').disabled = true;
-						document.getElementById('delete_button').disabled = true;
-						queryPerson();
+						initStatus();
 					} else {
 						alert('修改失敗: ' + response.status);
 					}

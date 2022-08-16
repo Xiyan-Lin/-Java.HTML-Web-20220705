@@ -8,12 +8,18 @@
 		<script>
 			// 新增資料
 			function addPerson() {
-				var data = 'name=John&age=28';
+				var name = document.getElementById('name').value;
+				var age = document.getElementById('age').value;
+				var data = 'name=' + name + '&age=' + age;
+				console.log(data);
+				
 				var url = '/JavaWeb_20220705/rest/person/';
 				var method = {method: 'POST', body: data, headers: {'content-type': 'application/x-www-form-urlencoded'}};
 				fetch(url, method).then((response)=>{
 					console.log(response);
+					queryPerson();
 				});
+				
 				return false;
 			}
 			

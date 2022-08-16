@@ -112,7 +112,8 @@
 				var method = {method: 'DELETE'};
 				fetch(url, method).then((response)=>{
 					if(response.status == 200) {
-						alert('刪除成功');
+						queryPerson();
+						//alert('刪除成功');
 					} else {
 						alert('刪除失敗');
 					}

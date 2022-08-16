@@ -10,8 +10,21 @@
 			function queryPerson() {
 				var url = '/JavaWeb_20220705/rest/person/';
 				var method = {method: 'GET'};
-				fetch(url, method).then((response)=>{
-					console.log(response);
+				fetch(url, method)
+				.then((response)=>{
+					return response.text();
+				})
+				.then((json_str)=>{
+					console.log(json_str);
+					console.log(typeof(json_str));
+					// 因為 json_str 目前是 string 型態
+					// 所以要利用 JSON.parse(json_str) 轉為 Json 物件陣列以利分析
+					var array = JSON.parse(json_str);
+					console.log(array);
+					console.log(typeof(array));
+					console.log(array.length);
+					
+					document.getElementById('person_list').innerText = json_str;
 				});
 			}
 			
@@ -52,6 +65,7 @@
 					<form class="pure-form">
 						<fieldset>
 							<legend>Person 列表</legend>
+							<div id="person_list"></div>
 						</fieldset>
 					</form>	
 				</td>

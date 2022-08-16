@@ -95,14 +95,12 @@
 					console.log(array.length);
 					// 加入筆數
 					document.getElementById('person_count').innerText = array.length;
-					
+					// 清空
 					document.getElementsByTagName('person_list').innerHTML = '';
 					var rows = ''
 					for(var i=0;i<array.length;i++) {
 						var row = '<tr onclick="getPerson('+ array[i].id +')" style="cursor: pointer" title="按我一下可修改"><td>' + array[i].id + '</td><td>' + array[i].name + '</td><td>' + array[i].age + '</td></tr>';
 						rows += row;
-						//document.getElementById('person_list').insertAdjacentHTML('afterend', row); // 最新的一筆在最上面
-						//document.getElementById('person_list').insertAdjacentHTML('beforeend', row); // 最新的一筆在最下面
 					}
 					document.getElementById('person_list').innerHTML = rows;
 					

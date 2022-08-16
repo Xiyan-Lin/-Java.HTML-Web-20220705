@@ -19,9 +19,14 @@
 			<tr>
 				<!-- Person 表單 -->
 				<td valign="top" width="50%">
-					<form class="pure-form">
+					<form class="pure-form" onsubmit="return false">
 						<fieldset>
 							<legend>Person 表單</legend>
+							序號: <input type="text" id="id" name="id" readonly="readonly"><p />
+							姓名: <input type="text" id="name" name="name" required="required"><p />
+							年齡: <input type="number" id="age" name="age" required="required"><p />
+							<button type="reset" class="pure-button">清除</button>
+							<button type="submit" class="pure-button pure-button-primary">新增</button>
 						</fieldset>
 					</form>
 				</td>

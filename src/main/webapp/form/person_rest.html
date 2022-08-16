@@ -26,7 +26,8 @@
 					
 					for(var i=0;i<array.length;i++) {
 						var row = '<tr><td>' + array[i].id + '</td><td>' + array[i].name + '</td><td>' + array[i].age + '</td></tr>';
-						document.getElementById('person_list').insertAdjacentHTML('afterbegin', row);
+						document.getElementById('person_list').insertAdjacentHTML('afterend', row); // 最新的一筆在最上面
+						//document.getElementById('person_list').insertAdjacentHTML('beforeend', row); // 最新的一筆在最下面
 					}
 				});
 			}
@@ -74,8 +75,8 @@
 										<th>序號</th><th>姓名</th><th>年齡</th>
 									</tr>
 								</thead>
-								<tbody>
-									<div id="person_list"></div>
+								<tbody id="person_list">
+									
 								</tbody>
 							</table>
 						</fieldset>

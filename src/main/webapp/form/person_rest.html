@@ -105,10 +105,27 @@
 				});
 			}
 			
+			// 刪除使用者
+			function deletePerson() {
+				var id = document.getElementById('id').value;
+				var url = '/JavaWeb_20220705/rest/person/' + id;
+				var method = {method: 'DELETE'};
+				fetch(url, method)
+				.then((response)=>{
+					if(response.status == 200) {
+						alert('刪除成功');
+					} else {
+						alert('刪除失敗');
+					}
+				});
+			}
+			
 			// 頁面載入完成後要做的事
 			window.onload = (event) =>{
 			    console.log('Page Loaded');
 			    queryPerson();
+			    // 註冊 delete_button onclick 事件
+			    document.getElementById('delete_button').onclick = deletePerson;
 			};
 		</script>
 	</head>
@@ -134,7 +151,7 @@
 							年齡: <input type="number" id="age" name="age" required="required"><p />
 							<button type="submit" id="add_button" class="button-success pure-button">新增</button>
 							<button type="submit" id="update_button" class="button-warning pure-button" disabled="true">修改</button>
-							<button type="submit" id="delete_button" class="button-error pure-button" disabled="true">刪除</button>
+							<button type="button" id="delete_button" class="button-error pure-button" disabled="true">刪除</button>
 						</fieldset>
 					</form>
 				</td>

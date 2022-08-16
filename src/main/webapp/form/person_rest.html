@@ -6,6 +6,11 @@
 		<meta charset="UTF-8">
 		<title>Person Rest</title>
 		<script>
+			// 單筆資料
+			function getPerson(id) {
+				console.log(id);	
+			}
+			
 			// 新增資料
 			function addPerson() {
 				var name = document.getElementById('name').value;
@@ -47,7 +52,7 @@
 					// 加入筆數
 					document.getElementById('person_count').innerText = array.length;
 					for(var i=0;i<array.length;i++) {
-						var row = '<tr><td>' + array[i].id + '</td><td>' + array[i].name + '</td><td>' + array[i].age + '</td></tr>';
+						var row = '<tr onclick="getPerson('+ array[i].id +')" style="cursor: pointer" title="按我一下可修改"><td>' + array[i].id + '</td><td>' + array[i].name + '</td><td>' + array[i].age + '</td></tr>';
 						document.getElementById('person_list').insertAdjacentHTML('afterend', row); // 最新的一筆在最上面
 						//document.getElementById('person_list').insertAdjacentHTML('beforeend', row); // 最新的一筆在最下面
 					}

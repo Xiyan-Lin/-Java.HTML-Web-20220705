@@ -13,10 +13,18 @@
 				var method = {method: 'GET'};
 				fetch(url, method)
 				.then((response)=>{
-					return response.text();
+					if(response.status == 200) {
+						return response.text();
+					} else {
+						alert('無法取得資料');
+					}
 				})
 				.then((json_str)=>{
 					console.log(json_str);
+					var person = JSON.parse(json_str);
+					document.getElementById('id').value = person.id;
+					document.getElementById('name').value = person.name;
+					document.getElementById('age').value = person.age;
 				});
 			}
 			

@@ -3,6 +3,36 @@
 	<head>
 		<link rel="stylesheet" href="https://unpkg.com/purecss@2.1.0/build/pure-min.css">
 		<meta charset="UTF-8">
+		<style type="text/css">
+			.button-success,
+	        .button-error,
+	        .button-warning,
+	        .button-secondary {
+	            color: white;
+	            border-radius: 4px;
+	            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+	        }
+	
+	        .button-success {
+	            background: rgb(28, 184, 65);
+	            /* this is a green */
+	        }
+	
+	        .button-error {
+	            background: rgb(202, 60, 60);
+	            /* this is a maroon */
+	        }
+	
+	        .button-warning {
+	            background: rgb(223, 117, 20);
+	            /* this is an orange */
+	        }
+	
+	        .button-secondary {
+	            background: rgb(66, 184, 221);
+	            /* this is a light blue */
+	        }
+		</style>
 		<title>Person Rest</title>
 	</head>
 	<body style="padding: 10px">
@@ -26,7 +56,10 @@
 							姓名: <input type="text" id="name" name="name" required="required"><p />
 							年齡: <input type="number" id="age" name="age" required="required"><p />
 							<button type="reset" class="pure-button">清除</button>
-							<button type="submit" class="pure-button pure-button-primary">新增</button>
+							<button type="submit" class="button-success pure-button">新增</button>
+							<button type="submit" class="button-error pure-button">新增</button>
+							<button type="submit" class="button-warning pure-button">新增</button>
+							<button type="submit" class="button-secondary pure-button">新增</button>
 						</fieldset>
 					</form>
 				</td>

@@ -30,6 +30,7 @@ public class PersonServlet extends HttpServlet {
 	// 功能性查詢路徑範例: /rest/person/?min=20&max=30
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("application/json");
 		System.out.println(req.getParameterMap().size());
 		// 功能性查詢
 		// 功能性查詢因為一定有帶入參數, 所以 req.getParameterMap().size() 一定會 > 0
@@ -65,6 +66,7 @@ public class PersonServlet extends HttpServlet {
 	// 路徑範例: /rest/person/
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("application/json");
 		if(checkPath(req) != null) return;
 		// 取得資料
 		String name = req.getParameter("name");
@@ -82,6 +84,7 @@ public class PersonServlet extends HttpServlet {
 	// 路徑範例: /rest/person/2
 	@Override
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("application/json");
 		Integer id = checkPath(req);
 		if(id == null) return;
 		
@@ -118,6 +121,7 @@ public class PersonServlet extends HttpServlet {
 	// 路徑範例: /rest/person/3
 	@Override
 	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("application/json");
 		Integer id = checkPath(req);
 		if(id == null) return;
 		

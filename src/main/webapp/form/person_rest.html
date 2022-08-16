@@ -69,7 +69,7 @@
 				fetch(url, method).then((response)=>{
 					console.log(response);
 					if(response.status == 200) {
-						queryPerson();
+						initStatus();
 					} else {
 						alert('新增失敗: ' + response.status);
 					}
@@ -112,18 +112,26 @@
 				var method = {method: 'DELETE'};
 				fetch(url, method).then((response)=>{
 					if(response.status == 200) {
-						queryPerson();
-						//alert('刪除成功');
+						initStatus();
 					} else {
 						alert('刪除失敗');
 					}
 				});
 			}
 			
+			function initStatus() {
+				document.getElementById('person_form').reset();
+				document.getElementById('person_form').setAttribute("onsubmit", "return addPerson()");
+				document.getElementById('add_button').disabled = false;
+				document.getElementById('update_button').disabled = true;
+				document.getElementById('delete_button').disabled = true;
+				queryPerson();
+			}
+			
 			// 頁面載入完成後要做的事
 			window.onload = (event) =>{
 			    console.log('Page Loaded');
-			    queryPerson();
+			    initStatus();
 			    // 註冊 delete_button onclick 事件
 			    document.getElementById('delete_button').onclick = deletePerson;
 			};
@@ -150,8 +158,8 @@
 							姓名: <input type="text" id="name" name="name" required="required"><p />
 							年齡: <input type="number" id="age" name="age" required="required"><p />
 							<button type="submit" id="add_button" class="button-success pure-button">新增</button>
-							<button type="submit" id="update_button" class="button-warning pure-button" disabled="true">修改</button>
-							<button type="button" id="delete_button" class="button-error pure-button" disabled="true">刪除</button>
+							<button type="submit" id="update_button" class="button-warning pure-button">修改</button>
+							<button type="button" id="delete_button" class="button-error pure-button">刪除</button>
 						</fieldset>
 					</form>
 				</td>

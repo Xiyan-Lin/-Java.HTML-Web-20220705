@@ -5,6 +5,13 @@
 		<link rel="stylesheet" href="/JavaWeb_20220705/css/mystyle.css">
 		<meta charset="UTF-8">
 		<title>Person Rest</title>
+		<script>
+			
+			// 頁面載入完成後要做的事
+			window.onload = (event) =>{
+			    console.log('Page Loaded');
+			};
+		</script>
 	</head>
 	<body style="padding: 10px">
 		<h2>本範例是一個 Person Rest SPA 的應用</h2>
@@ -28,9 +35,6 @@
 							年齡: <input type="number" id="age" name="age" required="required"><p />
 							<button type="reset" class="pure-button">清除</button>
 							<button type="submit" class="button-success pure-button">新增</button>
-							<button type="submit" class="button-error pure-button">新增</button>
-							<button type="submit" class="button-warning pure-button">新增</button>
-							<button type="submit" class="button-secondary pure-button">新增</button>
 						</fieldset>
 					</form>
 				</td>

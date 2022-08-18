@@ -17,7 +17,7 @@ public class WebSocketEndpoint {
 	@OnOpen // 建立連線
 	public void onOpen(Session session) {
 		// 紀錄連線資訊
-		System.out.println("有新的連線進來: " + session.getId());
+		System.out.println("有新的連線進來 session id: " + session.getId());
 		// 將 session 物件存入到 sessions 集合中
 		sessions.add(session);
 		// 顯示目前連線數量

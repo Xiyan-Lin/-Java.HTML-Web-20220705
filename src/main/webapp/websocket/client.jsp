@@ -38,9 +38,11 @@
 				// 建立 WebSocket 連線
 				webSocket = new WebSocket(url);
 				// 以下就可以開始偵測 websocket 的各種事件
+				
 				webSocket.onopen = function(event) { // 連線成功
 					console.log('連線成功');
 				};
+				
 				webSocket.onmessage = function(event) { // 接收訊息
 					var msg = event.data;
 					console.log(msg);
@@ -48,9 +50,11 @@
 					loginBtn.disabled = true;
 					submitBtn.disabled = false;
 				};
+				
 				webSocket.onerror = function(event) { // 連線失敗
 					
 				};
+				
 				webSocket.onclose = function(event) { // 連線關閉
 					
 				};

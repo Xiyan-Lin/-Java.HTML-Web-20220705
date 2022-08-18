@@ -16,6 +16,9 @@
 				var loginBtn = document.getElementById("loginBtn");
 				var submitBtn = document.getElementById("submitBtn");
 				
+				loginBtn.disabled = false;
+				submitBtn.disabled = true;
+				
 				// 按下 loginBtn 要做的事
 				loginBtn.addEventListener("click", function(){
 					//alert('按下 登入');
@@ -41,6 +44,9 @@
 				webSocket.onmessage = function(event) { // 接收訊息
 					var msg = event.data;
 					console.log(msg);
+					messageDisplay.insertAdjacentHTML('afterbegin', msg + '<br />');
+					loginBtn.disabled = true;
+					submitBtn.disabled = false;
 				};
 				webSocket.onerror = function(event) { // 連線失敗
 					

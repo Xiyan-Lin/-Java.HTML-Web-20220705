@@ -7,9 +7,9 @@
 		<meta charset="UTF-8">
 		<title>WebSocket Client</title>
 		<script type="text/javascript">
+			var webSocket = null;
 			// 當html頁面元件載入完畢之後要做的程序
 			window.onload = function() {
-				var webSocket = null;
 				// 獲取 DOM 元件
 				var username = document.getElementById("username");
 				var message = document.getElementById("message");
@@ -29,6 +29,7 @@
 				
 				// 按下 closeBtn 要做的事
 				closeBtn.addEventListener("click", function(){
+					alert(webSocket);
 					webSocket.close();
 					webSocket = null;	
 				});

@@ -14,15 +14,23 @@
 				var username = document.getElementById("username");
 				var message = document.getElementById("message");
 				var loginBtn = document.getElementById("loginBtn");
+				var closeBtn = document.getElementById("closeBtn");
 				var submitBtn = document.getElementById("submitBtn");
 				
 				loginBtn.disabled = false;
+				closeBtn.disabled = true;
 				submitBtn.disabled = true;
 				
 				// 按下 loginBtn 要做的事
 				loginBtn.addEventListener("click", function(){
 					//alert('按下 登入');
 					setWebSocket();
+				});
+				
+				// 按下 closeBtn 要做的事
+				closeBtn.addEventListener("click", function(){
+					webSocket.close();
+					webSocket = null;	
 				});
 				
 				// 按下 submitBtn 要做的事
@@ -48,6 +56,7 @@
 					console.log(msg);
 					messageDisplay.insertAdjacentHTML('afterbegin', msg + '<br />');
 					loginBtn.disabled = true;
+					closeBtn.disabled = false;
 					submitBtn.disabled = false;
 				};
 				
@@ -56,7 +65,9 @@
 				};
 				
 				webSocket.onclose = function(event) { // 連線關閉
-					
+					loginBtn.disabled = false;
+					closeBtn.disabled = true;
+					submitBtn.disabled = true;
 				};
 			}
 			
@@ -69,6 +80,7 @@
 				<legend>WebSocket Client</legend>
 				姓名: <input type="text" id="username" placeholder="請輸入名稱" required="required" />
 				<button type="button" class="pure-button pure-button-primary" id="loginBtn">登入</button>
+				<button type="button" class="pure-button pure-button-primary" id="closeBtn">關閉</button>
 				<p />
 				訊息: <input type="text" id="message" placeholder="請輸入訊息" required="required" />
 				<button type="submit" class="pure-button pure-button-primary" id="submitBtn">傳送</button>

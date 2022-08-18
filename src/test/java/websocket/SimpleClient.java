@@ -26,7 +26,7 @@ class Client {
 public class SimpleClient {
 	public static void main(String[] args) throws Exception {
 		// 設定 WebSocket Endpoint 位置
-		URI uri = new URI("http://localhost:8080/JavaWeb_20220705/websocket_endpoint");
+		URI uri = new URI("ws://localhost:8080/JavaWeb_20220705/websocket_endpoint");
 		WebSocketContainer container = ContainerProvider.getWebSocketContainer();
 		Session session = container.connectToServer(new Client(), uri);
 		while(true) {

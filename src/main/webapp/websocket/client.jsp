@@ -22,7 +22,7 @@
 				});
 				
 				// 按下 submitBtn 要做的事
-				loginBtn.addEventListener("click", function(){
+				submitBtn.addEventListener("click", function(){
 					alert('按下 傳送');
 				});
 			};

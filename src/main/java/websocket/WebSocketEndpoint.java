@@ -32,9 +32,15 @@ public class WebSocketEndpoint {
 		}
 	}
 	
-	@OnMessage // 傳送訊息
+	@OnMessage // 接收訊息
 	public void onMessage(String message, Session session) {
-		
+		System.out.println("接收訊息: " + message);
+		// 進行群播
+		for(Session s : sessions) {
+			if(s.isOpen()) {
+				s.getAsyncRemote().sendText(message);
+			}
+		}
 	}
 	
 	@OnClose // 關閉連線

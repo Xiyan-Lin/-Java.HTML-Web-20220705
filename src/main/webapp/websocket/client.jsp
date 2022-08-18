@@ -36,7 +36,8 @@
 				
 				// 按下 submitBtn 要做的事
 				submitBtn.addEventListener("click", function(){
-					alert('按下 傳送');
+					//alert('按下 傳送');
+					sendMessage();
 				});
 			};
 			
@@ -70,6 +71,11 @@
 					closeBtn.disabled = true;
 					submitBtn.disabled = true;
 				};
+			}
+			
+			function sendMessage() {
+				var msg = username + "說: " + message;
+				webSocket.send(msg);
 			}
 			
 		</script>

@@ -23,7 +23,7 @@ public class WebSocketEndpoint {
 		// 顯示目前連線數量
 		System.out.println("目前連線數量: " + sessions.size());
 		// 群播資訊: 報告大家說有新的人連線進來了
-		String message = "有新成員加入";
+		String message = "有新成員加入, 目前人數: " + sessions.size();
 		// 進行群播
 		for(Session s : sessions) {
 			if(s.isOpen()) {

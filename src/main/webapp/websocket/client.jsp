@@ -74,8 +74,12 @@
 			}
 			
 			function sendMessage() {
-				var msg = username.value + "說: " + message.value;
-				webSocket.send(msg);
+				if(username.value.trim().length > 0 && message.value.trim().length > 0) { 
+					var msg = username.value + "說: " + message.value;
+					webSocket.send(msg);
+				} else {
+					alert('請輸入要傳送的資訊');
+				}
 			}
 			
 		</script>

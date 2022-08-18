@@ -39,8 +39,20 @@ public class WebSocketEndpoint {
 	
 	@OnClose // 關閉連線
 	public void onClose(Session session) {
-		
-		
+		// 紀錄連線資訊
+		System.out.println("有連線關閉 session id: " + session.getId());
+		// 將 session 物件從 sessions 集合中移除
+		sessions.remove(session);
+		// 顯示目前連線數量
+		System.out.println("目前連線數量: " + sessions.size());
+		// 群播資訊: 報告大家說有成員離開
+		String message = "有成員離開, 目前人數: " + sessions.size();
+		// 進行群播
+		for(Session s : sessions) {
+			if(s.isOpen()) {
+				s.getAsyncRemote().sendText(message);
+			}
+		}
 	}
 	
 	

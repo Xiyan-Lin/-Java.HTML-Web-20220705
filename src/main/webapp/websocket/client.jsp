@@ -74,7 +74,7 @@
 			}
 			
 			function sendMessage() {
-				var msg = username + "說: " + message;
+				var msg = username.value + "說: " + message.value;
 				webSocket.send(msg);
 			}
 			

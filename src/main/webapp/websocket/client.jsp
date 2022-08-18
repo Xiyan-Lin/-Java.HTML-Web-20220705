@@ -29,7 +29,7 @@
 				
 				// 按下 closeBtn 要做的事
 				closeBtn.addEventListener("click", function(){
-					alert(webSocket);
+					//alert(webSocket);
 					webSocket.close();
 					webSocket = null;	
 				});

@@ -35,7 +35,7 @@ public class JPAAddEmployeeServlet extends JPABaseServlet {
 			String md5_password = String.format("%032X", new BigInteger(result));
 			
 			// 將 salary 進行 DES 加密
-			String key_path = "C:/Users/MB-207/eclipse-workspace/JavaWeb_20220705/key/user2.key";
+			String key_path = "C:/Users/MB-207/eclipse-workspace/JavaWeb_20220705/key/user.key";
 			DESEncryptService des = new DESEncryptService(key_path);
 			byte[] des_salary = des.encrytor(salary); // salary 加密
 			

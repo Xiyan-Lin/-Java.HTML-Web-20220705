@@ -16,10 +16,13 @@ public class DESEncryptTest {
 		System.out.println("明文: " + msg);
 		
 		// 加密
-		byte[] enMsg = des.encrytor(msg); // 將明文加密
+		byte[] enMsg = des.encrytor(msg); // 將明文加密 (存入資料庫 )
 		System.out.println(Arrays.toString(enMsg));
-		String output = String.format("%X", new BigInteger(enMsg));
+		String output = des.bytesToHex(enMsg);
 		System.out.println("密文: " + output);
+		
+		// 解密
+		
 		
 	}
 

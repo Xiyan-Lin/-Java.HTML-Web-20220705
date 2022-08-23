@@ -65,5 +65,31 @@ public class DESEncryptService {
 		byte[] cipherByte = cipher.doFinal(buff);
         return cipherByte;
     }
+	
+	// 16 進位轉 byte[]
+	public static byte[] hexToByteArray(String inHex){  
+	    int hexlen = inHex.length();  
+	    byte[] result;  
+	    if (hexlen % 2 == 1){  
+	        //奇數  
+	        hexlen++;  
+	        result = new byte[(hexlen/2)];  
+	        inHex="0"+inHex;  
+	    }else {  
+	        //偶數  
+	        result = new byte[(hexlen/2)];  
+	    }  
+	    int j=0;  
+	    for (int i = 0; i < hexlen; i+=2){  
+	        result[j]=hexToByte(inHex.substring(i,i+2));  
+	        j++;  
+	    }  
+	    return result;   
+	}  
+	
+	// byte[] 轉 16 進位
+	public static byte hexToByte(String inHex){  
+		return (byte)Integer.parseInt(inHex, 16);  
+	}  
 }
 

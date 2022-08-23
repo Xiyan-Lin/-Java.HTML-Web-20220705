@@ -24,9 +24,9 @@ public class JPAAddEmployeeServlet extends JPABaseServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		String name = "John";
-		String password = "1234";
-		String salary = "40000";
+		String name = "Bob";
+		String password = "2222";
+		String salary = "60000";
 		
 		try {
 			// 將 password 進行 MD5 加密

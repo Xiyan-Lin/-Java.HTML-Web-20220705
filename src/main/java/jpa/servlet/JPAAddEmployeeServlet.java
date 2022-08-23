@@ -44,6 +44,7 @@ public class JPAAddEmployeeServlet extends JPABaseServlet {
 			employee.setName(name);
 			employee.setPassword(md5_password);
 			employee.setSalary(des_salary);
+			
 			// 儲存資料
 			getJPAService().addEmployee(employee);
 			

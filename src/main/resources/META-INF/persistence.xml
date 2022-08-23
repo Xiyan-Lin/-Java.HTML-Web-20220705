@@ -7,6 +7,7 @@
 	<persistence-unit name="demo" transaction-type="RESOURCE_LOCAL">
     
         <class>jpa.entity.Person</class>
+        <class>jpa.entity.Employee</class>
         
         <properties>
             <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>

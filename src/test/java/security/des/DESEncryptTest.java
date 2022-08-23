@@ -22,7 +22,9 @@ public class DESEncryptTest {
 		System.out.println("密文: " + output);
 		
 		// 解密
-		
+		// 取得密鑰位置
+		key_path = "C:/Users/MB-207/eclipse-workspace/JavaWeb_20220705/key/user.key";
+		des = new DESEncryptService(key_path);
 		
 	}
 

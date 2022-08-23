@@ -8,6 +8,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import jpa.entity.Employee;
 import jpa.entity.Person;
 
 public class JPAService {
@@ -19,6 +20,14 @@ public class JPAService {
 			emf = Persistence.createEntityManagerFactory("demo");
 		}
 		em = emf.createEntityManager();
+	}
+	
+	// 新增 Employee
+	public synchronized void addEmployee(Employee employee) {
+		EntityTransaction etx = em.getTransaction(); // 取得交易物件(交易:新增,修改,刪除)
+		etx.begin(); // 開始
+		em.persist(employee);  // 存入 employee
+		etx.commit(); // 提交
 	}
 	
 	// 新增

@@ -63,12 +63,17 @@ public class PersonWebApi extends HttpServlet {
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Integer id = getId(req);
 		if(id == null) {
-			resp.getWriter().print("null");
+			resp.getWriter().print(new Status("update", "無id資料", ""));
+			return;
+		}
+		Person person = jpaService.getPerson(id);
+		if(person == null) {
+			resp.getWriter().print(new Status("update", "此筆資料不存在", ""));
 			return;
 		}
 		String jsonString = IOUtils.toString(req.getInputStream(), "utf-8");
 		// 將 jsonString 轉 Person 物件
-		Person person = gson.fromJson(jsonString, Person.class);
+		person = gson.fromJson(jsonString, Person.class);
 		person.setId(id); // 將 id 注入到 person 物件中
 		jpaService.updatePerson(person);
 		resp.getWriter().print(gson.toJson(person));

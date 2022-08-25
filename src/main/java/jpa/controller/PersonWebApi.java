@@ -43,11 +43,17 @@ public class PersonWebApi extends HttpServlet {
 		Integer id = getId(req);
 		if(id == null) { // 全部查詢
 			List<Person> persons = jpaService.queryAllPerson();
-			resp.getWriter().print(gson.toJson(persons));
+			//resp.getWriter().print(gson.toJson(persons));
+			resp.getWriter().print(new Status("get", "true", persons));
 			return;
 		}
 		Person person = jpaService.getPerson(id);
-		resp.getWriter().print(gson.toJson(person));
+		if(person == null) {
+			resp.getWriter().print(new Status("get", "false", "id=" + id + ",此筆資料不存在"));
+			return;
+		}
+		//resp.getWriter().print(gson.toJson(person));
+		resp.getWriter().print(new Status("get", "true", person));
 	}
 
 	@Override
@@ -63,12 +69,12 @@ public class PersonWebApi extends HttpServlet {
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Integer id = getId(req);
 		if(id == null) {
-			resp.getWriter().print(new Status("update", "無id資料", ""));
+			resp.getWriter().print(new Status("update", "false", "無id資料"));
 			return;
 		}
 		Person person = jpaService.getPerson(id);
 		if(person == null) {
-			resp.getWriter().print(new Status("update", "此筆資料不存在", ""));
+			resp.getWriter().print(new Status("update", "false", "此筆資料不存在"));
 			return;
 		}
 		String jsonString = IOUtils.toString(req.getInputStream(), "utf-8");
@@ -83,12 +89,12 @@ public class PersonWebApi extends HttpServlet {
 	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Integer id = getId(req);
 		if(id == null) {
-			resp.getWriter().print(new Status("delete", "無id資料", ""));
+			resp.getWriter().print(new Status("delete", "false", "無id資料"));
 			return;
 		}
 		Person person = jpaService.getPerson(id);
 		if(person == null) {
-			resp.getWriter().print(new Status("delete", "此筆資料不存在", ""));
+			resp.getWriter().print(new Status("delete", "false", "此筆資料不存在"));
 			return;
 		}
 		jpaService.deletePerson(id);

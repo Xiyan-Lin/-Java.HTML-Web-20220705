@@ -53,12 +53,15 @@ public class PersonWebApi extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String jsonString = IOUtils.toString(req.getInputStream(), "utf-8");
-		resp.getWriter().print(jsonString);
+		// 將 jsonString 轉 Person 物件
+		Person person = gson.fromJson(jsonString, Person.class);
+		jpaService.addPerson(person);
+		resp.getWriter().print(gson.toJson(person));
 	}
 
 	@Override
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		
 	}
 	
 	@Override

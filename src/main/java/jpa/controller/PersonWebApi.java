@@ -76,7 +76,13 @@ public class PersonWebApi extends HttpServlet {
 	
 	@Override
 	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		Integer id = getId(req);
+		if(id == null) {
+			resp.getWriter().print("null");
+			return;
+		}
+		jpaService.deletePerson(id);
+		resp.getWriter().print(id);
 	}
 	
 }

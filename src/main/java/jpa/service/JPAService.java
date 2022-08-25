@@ -30,6 +30,16 @@ public class JPAService {
 		etx.commit(); // 提交
 	}
 	
+	// 多筆查詢 Employee
+	public List<Employee> queryEmployees() {
+		return em.createQuery("from Employee e", Employee.class).getResultList(); 
+	}
+	
+	// 單筆查詢 Employee
+	public Employee getEmployee(Integer id) {
+		return em.find(Employee.class, id); 
+	}
+	
 	// 新增
 	public synchronized void addPerson(Person person) {
 		EntityTransaction etx = em.getTransaction(); // 取得交易物件(交易:新增,修改,刪除)

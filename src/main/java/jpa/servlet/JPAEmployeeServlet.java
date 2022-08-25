@@ -16,7 +16,7 @@ import jpa.util.DESEncryptService;
 
 /*
  * GET /jpa/employee/
- * GET /jpa/employee/1?password=1234 (會得到此人的 salary 資料)
+ * GET /jpa/employee/251?password=1234 (會得到此人的 salary 資料)
  * */
 @WebServlet("/jpa/employee/*")
 public class JPAEmployeeServlet extends HttpServlet {
@@ -46,6 +46,7 @@ public class JPAEmployeeServlet extends HttpServlet {
 				
 				// 密碼比對
 				if(md5_password.equals(employee.getPassword())) {
+					// 進行 salary 解密程序
 					String key_path = "C:/Users/MB-207/eclipse-workspace/JavaWeb_20220705/key/user.key";
 					DESEncryptService des = new DESEncryptService(key_path);
 					String salary = new String(des.decryptor(employee.getSalary())); // 解密

@@ -56,7 +56,7 @@ public class PersonWebApi extends HttpServlet {
 		// 將 jsonString 轉 Person 物件
 		Person person = gson.fromJson(jsonString, Person.class);
 		jpaService.addPerson(person);
-		resp.getWriter().print(gson.toJson(person));
+		resp.getWriter().print(new Status("append", "true", person));
 	}
 
 	@Override

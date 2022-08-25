@@ -78,16 +78,32 @@ public class PersonWebApi extends HttpServlet {
 	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Integer id = getId(req);
 		if(id == null) {
-			resp.getWriter().print("No id");
+			resp.getWriter().print(new Status("delete", "無id資料", ""));
 			return;
 		}
 		Person person = jpaService.getPerson(id);
 		if(person == null) {
-			resp.getWriter().print("None");
+			resp.getWriter().print(new Status("delete", "此筆資料不存在", ""));
 			return;
 		}
 		jpaService.deletePerson(id);
 		resp.getWriter().print(id);
+	}
+	
+	// 回應物件
+	class Status {
+		String name;
+		String message;
+		String result;
+		Status(String name, String message, String result) {
+			this.name = name;
+			this.message = message;
+			this.result = result;
+		}
+		
+		public String toString() {
+			return gson.toJson(this);
+		}
 	}
 	
 }

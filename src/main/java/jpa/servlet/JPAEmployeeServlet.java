@@ -55,10 +55,8 @@ public class JPAEmployeeServlet extends HttpServlet {
 				}
 				
 			} catch (Exception e) {
-				
+				resp.getWriter().print(e);
 			}
-			
-			
 		}
 	}
 	

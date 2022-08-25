@@ -76,7 +76,7 @@ public class PersonWebApi extends HttpServlet {
 		person = gson.fromJson(jsonString, Person.class);
 		person.setId(id); // 將 id 注入到 person 物件中
 		jpaService.updatePerson(person);
-		resp.getWriter().print(gson.toJson(person));
+		resp.getWriter().print(new Status("update", "true", person));
 	}
 	
 	@Override
@@ -92,15 +92,15 @@ public class PersonWebApi extends HttpServlet {
 			return;
 		}
 		jpaService.deletePerson(id);
-		resp.getWriter().print(id);
+		resp.getWriter().print(new Status("delete", "true", ""));
 	}
 	
 	// 回應物件
 	class Status {
 		String name;
 		String message;
-		String result;
-		Status(String name, String message, String result) {
+		Object result;
+		Status(String name, String message, Object result) {
 			this.name = name;
 			this.message = message;
 			this.result = result;
